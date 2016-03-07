@@ -27,6 +27,7 @@ app.on('ready', function() {
     transparent: true,
     frame: false,
     resizable: false,
+    alwaysOnTop: true,
   });
 
   // and load the index.html of the app.
