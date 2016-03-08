@@ -2,6 +2,8 @@ const gulp = require('gulp')
 
 gulp.task('watch', () => {
   gulp.start([
-    'js:watch',
+    'script:watch',
+    'style:watch',
+    'html:watch',
   ])
 })
