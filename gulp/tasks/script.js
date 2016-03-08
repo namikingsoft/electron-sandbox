@@ -11,8 +11,8 @@ gulp.task('script', () => {
   .pipe($.plumber())
   .pipe($.sourcemaps.init())
   .pipe($.typescript(project))
-  .pipe($.sourcemaps.write())
-  .pipe($.sourcemaps.init({loadMaps: true}))
+  .pipe($.sourcemaps.write()) // @todo for tsx
+  .pipe($.sourcemaps.init({loadMaps: true})) // @todo for tsx
   .pipe($.babel())
   .pipe($.sourcemaps.write())
   .pipe(gulp.dest(config.dest.dir))
