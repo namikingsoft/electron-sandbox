@@ -2,7 +2,7 @@
   "name": "electron-sandbox",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/app.js",
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
