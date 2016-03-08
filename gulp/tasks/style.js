@@ -3,15 +3,15 @@ const $ = require('gulp-load-plugins')()
 const config = require('../config')
 
 gulp.task('style', () => {
-  gulp.src(`${config.srcDir}/**/*.styl`)
+  gulp.src(config.src.style)
   .pipe($.plumber())
   .pipe($.sourcemaps.init())
   .pipe($.stylus({compress: true}))
   .pipe($.sourcemaps.write())
-  .pipe(gulp.dest(config.destDir))
+  .pipe(gulp.dest(config.dest.dir))
 })
 
 gulp.task('style:watch', () => {
   gulp.start('style')
-  $.watch(`${config.srcDir}/**/*.styl`, () => gulp.start('style'))
+  $.watch(config.src.style, () => gulp.start('style'))
 })
