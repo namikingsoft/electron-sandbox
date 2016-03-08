@@ -1,0 +1,10 @@
+{
+  "name": "electron-sandbox",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "github-electron": "registry:dt/github-electron#0.36.3+20160229022412",
+    "node": "registry:dt/node#4.0.0+20160226132328",
+    "source-map-support": "registry:dt/source-map-support#0.2.10+20150504204506"
+  }
+}

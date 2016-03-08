@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "outDir": "build"
+  },
+  "exclude": [
+    "node_modules",
+    "typings",
+    "test"
+  ]
+}
