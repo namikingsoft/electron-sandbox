@@ -5,7 +5,6 @@ import 'babel-polyfill'
 
 sourcemap.install()
 
-console.log(app)
 app.on('ready', () => {
   const mainWindow: any = new BrowserWindow({
     width: 800,
