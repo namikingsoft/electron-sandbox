@@ -30,6 +30,7 @@ app.on('ready', function() {
     alwaysOnTop: true,
   });
   mainWindow.setIgnoreMouseEvents(true);
+  mainWindow.setVisibleOnAllWorkspaces(true);
 
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
