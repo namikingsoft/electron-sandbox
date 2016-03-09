@@ -7,15 +7,16 @@ const project = $.typescript.createProject('tsconfig.json', {
 })
 
 const build = (dest, isWatch) => {
+  const isDevelop = dest === config.dir.server
   return gulp.src(config.src.script)
   .pipe($.if(isWatch, $.plumber()))
-  .pipe($.if(isWatch, $.sourcemaps.init()))
+  .pipe($.if(isDevelop, $.sourcemaps.init()))
   .pipe($.typescript(project))
-  .pipe($.if(isWatch, $.sourcemaps.write())) // @todo for tsx
-  .pipe($.if(isWatch, $.sourcemaps.init({loadMaps: true}))) // @todo for tsx
+  .pipe($.if(isDevelop, $.sourcemaps.write())) // @todo for tsx
+  .pipe($.if(isDevelop, $.sourcemaps.init({loadMaps: true}))) // @todo for tsx
   .pipe($.babel())
-  .pipe($.if(!isWatch, $.uglify()))
-  .pipe($.if(isWatch, $.sourcemaps.write()))
+  .pipe($.if(!isDevelop, $.uglify()))
+  .pipe($.if(isDevelop, $.sourcemaps.write()))
   .pipe(gulp.dest(dest))
 }
 
