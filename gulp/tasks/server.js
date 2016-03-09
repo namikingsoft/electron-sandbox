@@ -13,8 +13,12 @@ gulp.task('server', () => {
     let isRestart = false
     $.watch(config.server.restart, () => isRestart = true)
     $.watch(`${config.dir.server}/**/*`, () => {
-      isRestart? electron.restart() : electron.reload()
-      isRestart = false
+      if (isRestart) {
+        electron.restart()
+        isRestart = false
+      } else {
+        electron.reload()
+      }
     })
   }, 5000)
 })
