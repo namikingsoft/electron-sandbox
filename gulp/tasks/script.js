@@ -10,6 +10,7 @@ const build = isWatch => {
   gulp.src(config.src.script)
   .pipe($.if(isWatch, $.plumber()))
   .pipe($.if(isWatch, $.sourcemaps.init()))
+  .pipe($.typescript(project))
   .pipe($.if(isWatch, $.sourcemaps.write())) // @todo for tsx
   .pipe($.if(isWatch, $.sourcemaps.init({loadMaps: true}))) // @todo for tsx
   .pipe($.babel())
@@ -21,6 +22,6 @@ const build = isWatch => {
 gulp.task('script',       () => build())
 gulp.task('script:watch', () => {
   // @todo incremental build of typescript is difficult
-  gulp.start('script')
+  build(true)
   $.watch(config.src.script, config.watch, () => build(true))
 })
