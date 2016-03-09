@@ -4,6 +4,7 @@
   "dependencies": {},
   "ambientDependencies": {
     "github-electron": "registry:dt/github-electron#0.36.3+20160229022412",
+    "lodash": "registry:dt/lodash#3.10.0+20160127144039",
     "node": "registry:dt/node#4.0.0+20160226132328",
     "react": "registry:dt/react#0.14.0+20160302224448",
     "react-dom": "registry:dt/react-dom#0.0.0+20151118193745",
