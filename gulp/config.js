@@ -7,6 +7,7 @@ const dir = {
 const src = {
   script: `${dir.src}/**/*.{js,jsx,ts,tsx}`,
   style: `${dir.src}/**/*.styl`,
+  image: `${dir.src}/**/*.png`,
   html: `${dir.src}/**/*.html`,
 }
 
