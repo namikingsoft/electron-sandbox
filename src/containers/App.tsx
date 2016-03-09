@@ -10,17 +10,14 @@ import * as PostAction from '../actions/PostAction'
 interface Props {
   post?: Post
   postAction?: {
-    addMessage: (text: string)=>void,
+    startListen: ()=>void,
+    addMessage: (text:string)=>void,
   }
 }
 
 class App extends Component<Props, any> {
   constructor() {
     super()
-    setTimeout(() => {
-      const {addMessage} = this.props.postAction
-      addMessage('Added message')
-    }, 3000)
   }
 
   render() {
@@ -30,6 +27,12 @@ class App extends Component<Props, any> {
         <PostCanvas post={post} />
       </div>
     )
+  }
+
+  componentDidMount() {
+    const {startListen, addMessage} = this.props.postAction
+    startListen()
+    //addMessage('Added message')
   }
 }
 
