@@ -8,7 +8,7 @@ gulp.task('server', () => {
   gulp.start('watch')
   electron.start();
 
-  // watch after 5 second
+  // watch after 5 second for prebuild
   setTimeout(() => {
     let isRestart = false
     $.watch(config.server.restart, () => isRestart = true)
