@@ -23,11 +23,9 @@ app.on('ready', () => {
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`)
   mainWindow.setVisibleOnAllWorkspaces(true)
-  //mainWindow.setIgnoreMouseEvents(true)
+  mainWindow.setIgnoreMouseEvents(true)
+  mainWindow.on('closed', () => app.quit())
   //mainWindow.webContents.openDevTools()
-  mainWindow.on('closed', function() {
-    app.quit()
-  })
 
   // tray
   const tray = new Tray(`${__dirname}/images/icon.png`)
@@ -37,7 +35,3 @@ app.on('ready', () => {
   tray.setToolTip(app.getName());
   tray.setContextMenu(menu);
 });
-
-app.on('window-all-closed', () => {
-  app.quit();
-})
