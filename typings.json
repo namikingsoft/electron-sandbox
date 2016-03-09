@@ -9,8 +9,6 @@
     "react": "registry:dt/react#0.14.0+20160302224448",
     "react-dom": "registry:dt/react-dom#0.0.0+20151118193745",
     "react-redux": "registry:dt/react-redux#4.4.0+20160226053734",
-    "redux": "registry:dt/redux#1.0.0+20160201195450",
-    "redux-thunk": "registry:dt/redux-thunk#0.0.0+20160124074431",
-    "source-map-support": "registry:dt/source-map-support#0.2.10+20150504204506"
+    "redux": "registry:dt/redux#1.0.0+20160201195450"
   }
 }
