@@ -1,11 +1,17 @@
 /// <reference path="../typings/main.d.ts" />
-import {app, BrowserWindow} from 'electron'
-import * as sourcemap from 'source-map-support'
-import 'babel-polyfill'
+import {
+  app,
+  Menu,
+  Tray,
+  BrowserWindow,
+} from 'electron'
 
+// source map for node
+import * as sourcemap from 'source-map-support'
 sourcemap.install()
 
 app.on('ready', () => {
+  // window
   const mainWindow: any = new BrowserWindow({
     width: 800,
     height: 600,
@@ -21,6 +27,14 @@ app.on('ready', () => {
   mainWindow.on('closed', function() {
     app.quit()
   })
+
+  // tray
+  const tray = new Tray(`${__dirname}/images/icon.png`)
+  const menu = Menu.buildFromTemplate([
+    {label: "終了", click: () => mainWindow.close()}
+  ]);
+  tray.setToolTip(app.getName());
+  tray.setContextMenu(menu);
 });
 
 app.on('window-all-closed', () => {
