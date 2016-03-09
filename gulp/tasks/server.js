@@ -4,12 +4,18 @@ const $ = require('gulp-load-plugins')()
 const electron = require('electron-connect').server.create()
 const config = require('../config')
 
-gulp.task('server', () => {
-  gulp.start('watch')
-  electron.start();
+const pretask = [
+  'script:server',
+  'style:server',
+  'image:server',
+  'html:server',
+]
 
-  // watch after 5 second for prebuild
+gulp.task('server', pretask, () => {
+  electron.start();
+  gulp.start('watch')
   setTimeout(() => {
+  // watch after 5 second for prebuild
     let isRestart = false
     $.watch(config.server.restart, () => isRestart = true)
     $.watch(`${config.dir.server}/**/*`, () => {

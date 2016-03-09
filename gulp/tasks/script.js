@@ -6,8 +6,8 @@ const project = $.typescript.createProject('tsconfig.json', {
   typescript: require('typescript'),
 })
 
-const build = isWatch => {
-  gulp.src(config.src.script)
+const build = (dest, isWatch) => {
+  return gulp.src(config.src.script)
   .pipe($.if(isWatch, $.plumber()))
   .pipe($.if(isWatch, $.sourcemaps.init()))
   .pipe($.typescript(project))
@@ -16,12 +16,13 @@ const build = isWatch => {
   .pipe($.babel())
   .pipe($.if(!isWatch, $.uglify()))
   .pipe($.if(isWatch, $.sourcemaps.write()))
-  .pipe(gulp.dest(isWatch? config.dir.server : config.dir.dist))
+  .pipe(gulp.dest(dest))
 }
 
-gulp.task('script',       () => build())
-gulp.task('script:watch', () => {
+gulp.task('script',        () => build(config.dir.dist))
+gulp.task('script:server', () => build(config.dir.server))
+gulp.task('script:watch',  () => {
   // @todo incremental build of typescript is difficult
-  build(true)
-  $.watch(config.src.script, config.watch, () => build(true))
+  build(config.dir.server, true)
+  $.watch(config.src.script, config.watch, () => build(config.dir.server, true))
 })
