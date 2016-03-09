@@ -2,13 +2,13 @@ const gulp = require('gulp')
 const $ = require('gulp-load-plugins')()
 const config = require('../config')
 
-gulp.task('html', () => {
+const build = isWatch => {
   gulp.src(config.src.html)
-  .pipe($.plumber())
-  .pipe(gulp.dest(config.dest.dir))
-})
+  .pipe(isWatch? $.watch(config.src.html, config.watch) : $.util.noop())
+  .pipe($.if(isWatch, $.plumber()))
+  .pipe($.if(!isWatch, $.useref()))
+  .pipe(gulp.dest(isWatch? config.dir.server : config.dir.dist))
+}
 
-gulp.task('html:watch', () => {
-  gulp.start('html')
-  $.watch(config.src.html, () => gulp.start('html'))
-})
+gulp.task('html',       () => build())
+gulp.task('html:watch', () => build(true))

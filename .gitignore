@@ -1,3 +1,5 @@
 /dist
+/.server
 /typings
 /node_modules
+/npm-debug.log
