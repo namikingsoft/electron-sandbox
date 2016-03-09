@@ -9,12 +9,12 @@ const project = $.typescript.createProject('tsconfig.json', {
 const build = isWatch => {
   gulp.src(config.src.script)
   .pipe($.if(isWatch, $.plumber()))
-  .pipe($.sourcemaps.init())
-  .pipe($.sourcemaps.write()) // @todo for tsx
-  .pipe($.sourcemaps.init({loadMaps: true})) // @todo for tsx
+  .pipe($.if(isWatch, $.sourcemaps.init()))
+  .pipe($.if(isWatch, $.sourcemaps.write())) // @todo for tsx
+  .pipe($.if(isWatch, $.sourcemaps.init({loadMaps: true}))) // @todo for tsx
   .pipe($.babel())
   .pipe($.if(!isWatch, $.uglify()))
-  .pipe($.sourcemaps.write())
+  .pipe($.if(isWatch, $.sourcemaps.write()))
   .pipe(gulp.dest(isWatch? config.dir.server : config.dir.dist))
 }
 

@@ -7,8 +7,9 @@ import {
 } from 'electron'
 
 // source map for node
-import * as sourcemap from 'source-map-support'
-sourcemap.install()
+if (process.env.NODE_ENV === 'develop') {
+  require('source-map-support').install()
+}
 
 app.on('ready', () => {
   // window
