@@ -19,4 +19,13 @@ export default class Letter {
   get text(): string {
     return this.param.text
   }
+
+  get textDisplay(): string {
+    if (this.text) {
+      return this.text
+      .replace(/<[^<>]*>/g, '')
+    } else  {
+      return ''
+    }
+  }
 }

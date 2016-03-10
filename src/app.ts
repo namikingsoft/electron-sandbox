@@ -19,6 +19,7 @@ app.on('ready', () => {
   const mainWindow: any = new BrowserWindow({
     width: screenSize.width,
     height: screenSize.height,
+    center: true,
     transparent: true,
     frame: false,
     resizable: false,

@@ -16,7 +16,7 @@ export default class Message extends Component<Props, State> {
   constructor() {
     super()
     this.state = {
-      top: Math.floor(Math.random() * (window.innerHeight-20)),
+      top: Math.floor(Math.random() * (window.innerHeight-100)), // @todo asobi
       left: window.innerWidth,
     }
   }
@@ -25,7 +25,7 @@ export default class Message extends Component<Props, State> {
     const {letter} = this.props
     return (
       <div className="Message" style={this.state}>
-        <span className="Message__label" ref="label">{letter.text}</span>
+        <span className="Message__label" ref="label">{letter.textDisplay}</span>
       </div>
     )
   }
@@ -36,9 +36,9 @@ export default class Message extends Component<Props, State> {
       const label: any = ReactDOM.findDOMNode(this.refs['label'])
       this.setState({
         top: this.state.top,
-        left: -label.offsetWidth,
+        left: -label.offsetWidth - 300, // @todo asobi
       })
-    }, 100)
+    }, 0)
   }
 
   componentWillUnmount() {

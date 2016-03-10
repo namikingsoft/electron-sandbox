@@ -1,9 +1,11 @@
+import Letter from '../domains/Letter'
+
 type Dispatcher = (dispatch: Dispatch)=>void
 type Dispatch = (action: PostAction)=>void
 
 export interface PostAction {
   type: string
-  text?: string
+  letter?: Letter
 }
 
 export function startListen(text: string): Dispatcher {
@@ -11,17 +13,29 @@ export function startListen(text: string): Dispatcher {
     const slack = require('slack')
     const bot = slack.rtm.client()
     bot.message((message: any) => {
-      dispatch(addMessage(message.text))
+      const text = message.text
+      const letter = new Letter({text})
+      dispatch(addLetter(letter))
+      // @todo magic number
+      setTimeout(() => dispatch(removeLetter(letter)), 12000)
     })
     bot.listen({token: process.env.SLACK_TOKEN})
 
     // test
-    //setInterval(() => dispatch(addMessage('テストコメントです。')), 3000)
+    //setInterval(() => {
+    //  const letter = new Letter({text: 'テストコメントです。'})
+    //  dispatch(addMessage(letter))
+    //}, 3000)
   }
 }
 
-export function addMessage(text: string): PostAction {
-  return {type: ADD_MESSAGE, text}
+export function addLetter(letter: Letter): PostAction {
+  return {type: ADD_LETTER, letter}
 }
 
-export const ADD_MESSAGE = 'ADD_MESSAGE'
+export function removeLetter(letter: Letter): PostAction {
+  return {type: REMOVE_LETTER, letter}
+}
+
+export const ADD_LETTER = 'ADD_LETTER'
+export const REMOVE_LETTER = 'REMOVE_LETTER'
