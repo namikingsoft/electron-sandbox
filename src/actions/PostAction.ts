@@ -1,9 +1,7 @@
+import Action, {Dispatcher, Dispatch} from './Action'
 import Letter from '../domains/Letter'
 
-type Dispatcher = (dispatch: Dispatch)=>void
-type Dispatch = (action: PostAction)=>void
-
-export interface PostAction {
+export interface PostAction extends Action {
   type: string
   letter?: Letter
 }
