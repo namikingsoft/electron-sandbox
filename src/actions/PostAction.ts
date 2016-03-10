@@ -20,12 +20,6 @@ export function startListen(text: string): Dispatcher {
       setTimeout(() => dispatch(removeLetter(letter)), 12000)
     })
     bot.listen({token: process.env.SLACK_TOKEN})
-
-    // test
-    //setInterval(() => {
-    //  const letter = new Letter({text: 'テストコメントです。'})
-    //  dispatch(addMessage(letter))
-    //}, 3000)
   }
 }
 
