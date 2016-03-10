@@ -14,11 +14,14 @@
     "babel-polyfill": "^6.6.1",
     "immutable": "^3.7.6",
     "lodash": "^4.6.1",
+    "node-env-file": "^0.1.8",
+    "node-uuid": "^1.4.7",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
+    "slack": "^6.1.0",
     "source-map-support": "^0.4.0"
   },
   "devDependencies": {

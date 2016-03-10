@@ -1,6 +1,6 @@
 import * as action from '../constants/ActionConst'
 
-type Dispatcher = (dispatch: Dispatch)=>any
+type Dispatcher = (dispatch: Dispatch)=>void
 type Dispatch = (action: PostAction)=>void
 
 export interface PostAction {
@@ -9,10 +9,13 @@ export interface PostAction {
 }
 
 export function startListen(text: string): Dispatcher {
-  let count = 0
   return (dispatch: Dispatch) => {
-    setInterval(() => dispatch(addMessage(`Message ${++count}`)), 3000)
-    return {type: action.START_LISTEN}
+    const slack = require('slack')
+    const bot = slack.rtm.client()
+    bot.message((message: any) => {
+      dispatch(addMessage(message.text))
+    })
+    bot.listen({token: process.env.SLACK_TOKEN})
   }
 }
 

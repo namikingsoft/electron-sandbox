@@ -12,7 +12,7 @@ export default class PostCanvas extends Component<Props, any> {
     const {post} = this.props
     return (
       <div>
-        {post.letters.map(x => <Message key={x.text} letter={x} />)}
+        {post.letters.map(x => <Message key={x.id} letter={x} />)}
       </div>
     )
   }

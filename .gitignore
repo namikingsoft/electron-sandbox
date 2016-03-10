@@ -1,4 +1,5 @@
 /dist
+/.env
 /.server
 /typings
 /node_modules
