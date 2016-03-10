@@ -1,10 +1,10 @@
 import {List} from 'immutable'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
-import {PostAction} from '../actions/PostAction'
 import {
+  PostAction,
   ADD_MESSAGE
-} from '../constants/ActionConst'
+} from '../actions/PostAction'
 
 const initialState: Post = new Post({
   letters: List.of<Letter>(),

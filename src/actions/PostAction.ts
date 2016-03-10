@@ -1,5 +1,3 @@
-import * as action from '../constants/ActionConst'
-
 type Dispatcher = (dispatch: Dispatch)=>void
 type Dispatch = (action: PostAction)=>void
 
@@ -20,5 +18,7 @@ export function startListen(text: string): Dispatcher {
 }
 
 export function addMessage(text: string): PostAction {
-  return {type: action.ADD_MESSAGE, text}
+  return {type: ADD_MESSAGE, text}
 }
+
+export const ADD_MESSAGE = 'ADD_MESSAGE'
