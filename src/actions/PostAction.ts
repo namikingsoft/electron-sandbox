@@ -14,6 +14,9 @@ export function startListen(text: string): Dispatcher {
       dispatch(addMessage(message.text))
     })
     bot.listen({token: process.env.SLACK_TOKEN})
+
+    // test
+    //setInterval(() => dispatch(addMessage('テストコメントです。')), 3000)
   }
 }
 

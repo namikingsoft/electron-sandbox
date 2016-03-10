@@ -4,6 +4,7 @@ import {
   app,
   Menu,
   Tray,
+  screen,
   BrowserWindow,
 } from 'electron'
 
@@ -14,19 +15,20 @@ if (process.env.NODE_ENV === 'develop') {
 
 app.on('ready', () => {
   // window
+  const screenSize = screen.getPrimaryDisplay().size;
   const mainWindow: any = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: screenSize.width,
+    height: screenSize.height,
     transparent: true,
     frame: false,
     resizable: false,
-    //alwaysOnTop: true,
+    alwaysOnTop: true,
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`)
-  //mainWindow.setVisibleOnAllWorkspaces(true)
+  mainWindow.setVisibleOnAllWorkspaces(true)
   mainWindow.on('closed', () => app.quit())
-  //mainWindow.setIgnoreMouseEvents(true)
-  mainWindow.webContents.openDevTools()
+  mainWindow.setIgnoreMouseEvents(true)
+  //mainWindow.webContents.openDevTools()
 
   // tray
   const tray = new Tray(`${__dirname}/images/icon.png`)
