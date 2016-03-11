@@ -1,7 +1,8 @@
-const assert = require('power-assert')
-const Hello = () => 'World'
+import * as assert from 'power-assert'
 
 describe('Hello', function() {
+
+  const Hello = () => 'World'
 
   it('should be return World', () => {
     assert(Hello() === 'World')

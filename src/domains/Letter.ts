@@ -1,5 +1,7 @@
 import UID from './UID'
+import freeze from '../decorators/freeze'
 
+@freeze
 export default class Letter {
   constructor(private param: {
     text: string,
@@ -8,8 +10,6 @@ export default class Letter {
     if (!this.param.uid) {
       this.param.uid = new UID()
     }
-    Object.freeze(this)
-    Object.freeze(this.param)
   }
 
   get id(): string {
