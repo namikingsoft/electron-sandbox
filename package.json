@@ -4,6 +4,7 @@
   "description": "",
   "main": ".server/app.js",
   "scripts": {
+    "postinstall": "typings install",
     "build": "gulp package",
     "start": "NODE_ENV=develop gulp server",
     "test": "gulp test && NODE_PATH=.test mocha .test/**/*.spec.js",
