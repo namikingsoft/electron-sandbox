@@ -30,7 +30,7 @@ gulp.task('script:server:watch',  () => {
 })
 
 gulp.task('script:test', () => {
-  build([config.src.script, config.src.test], config.dir.work.test)
+  return build([config.src.script, config.src.test], config.dir.work.test)
 })
 gulp.task('script:test:watch', () => {
   $.watch([config.src.script, config.src.test], config.watch, () => {

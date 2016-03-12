@@ -7,8 +7,8 @@
     "postinstall": "typings install",
     "build": "gulp package",
     "start": "NODE_ENV=develop gulp server",
-    "test": "gulp script:test && NODE_PATH=.test mocha .test/**/*.spec.js",
-    "test:watch": "npm test; NODE_PATH=.test parallelshell 'gulp script:test:watch' 'mocha .test/**/*.spec.js --watch --reporter min'"
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
   },
   "author": "",
   "license": "MIT",
@@ -39,6 +39,7 @@
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-shell": "^0.5.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.3.0",
     "gulp-typescript": "^2.12.1",
