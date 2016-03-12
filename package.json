@@ -7,8 +7,8 @@
     "postinstall": "typings install",
     "build": "gulp package",
     "start": "NODE_ENV=develop gulp server",
-    "test": "gulp test && NODE_PATH=.test mocha .test/**/*.spec.js",
-    "test:watch": "NODE_PATH=.test parallelshell 'gulp test:watch' 'mocha .test/**/*.spec.js --watch --reporter min'"
+    "test": "gulp script:test && NODE_PATH=.test mocha .test/**/*.spec.js",
+    "test:watch": "npm test; NODE_PATH=.test parallelshell 'gulp script:test:watch' 'mocha .test/**/*.spec.js --watch --reporter min'"
   },
   "author": "",
   "license": "MIT",
