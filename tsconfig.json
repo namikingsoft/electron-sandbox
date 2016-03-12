@@ -5,6 +5,7 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
+    "baseUrl": "./src",
     "experimentalDecorators": true
   },
   "exclude": [

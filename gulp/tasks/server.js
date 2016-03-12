@@ -18,7 +18,7 @@ gulp.task('server', pretask, () => {
   // watch after 5 second for prebuild
     let isRestart = false
     $.watch(config.server.restart, () => isRestart = true)
-    $.watch(`${config.dir.server}/**/*`, () => {
+    $.watch(`${config.dir.work.server}/**/*`, () => {
       if (isRestart) {
         electron.restart()
         isRestart = false

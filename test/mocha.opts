@@ -1,1 +1,1 @@
---compilers ts:espower-typescript-babel/guess
+--require ./test/bootstrap

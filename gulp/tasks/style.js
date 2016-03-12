@@ -12,6 +12,6 @@ const build = (dest, isWatch) => {
   .pipe(gulp.dest(dest))
 }
 
-gulp.task('style',        () => build(config.dir.dist))
-gulp.task('style:server', () => build(config.dir.server))
-gulp.task('style:watch',  () => build(config.dir.server, true))
+gulp.task('style',              () => build(config.dir.dist))
+gulp.task('style:server',       () => build(config.dir.work.server))
+gulp.task('style:server:watch', () => build(config.dir.work.server, true))
