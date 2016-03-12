@@ -11,7 +11,7 @@ const dir = {
 const src = {
   script: `${dir.src}/**/*.{js,jsx,ts,tsx}`,
   style: `${dir.src}/**/*.styl`,
-  image: `${dir.src}/**/*.png`,
+  asset: `${dir.src}/**/*.{json,png,env}`,
   html: `${dir.src}/**/*.html`,
   test: `${dir.test}/**/*.spec.{js,jsx,ts,tsx}`,
 }

@@ -8,10 +8,10 @@ const build = (src, dest, isWatch) => {
   .pipe(gulp.dest(dest))
 }
 
-gulp.task('image',        () => build(config.src.image, config.dir.dist))
-gulp.task('image:server', () => build(config.src.image, config.dir.work.server))
-gulp.task('image:server:watch', () => {
-  $.watch(config.src.image, config.watch, file => {
+gulp.task('asset',        () => build(config.src.asset, config.dir.dist))
+gulp.task('asset:server', () => build(config.src.asset, config.dir.work.server))
+gulp.task('asset:server:watch', () => {
+  $.watch(config.src.asset, config.watch, file => {
     build(file.path, config.dir.work.server, true)
   })
 })
