@@ -1,7 +1,11 @@
 const dir = {
   src: './src',
   dist: './dist',
-  server: './.server',
+  test: './test',
+  work: {
+    server: './.server',
+    test: './.test',
+  },
 }
 
 const src = {
@@ -9,6 +13,7 @@ const src = {
   style: `${dir.src}/**/*.styl`,
   image: `${dir.src}/**/*.png`,
   html: `${dir.src}/**/*.html`,
+  test: `${dir.test}/**/*.spec.{js,jsx,ts,tsx}`,
 }
 
 const server= {

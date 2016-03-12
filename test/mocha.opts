@@ -1,1 +1,2 @@
---compilers ts:espower-typescript-babel/guess
+--colors
+--require ./test/bootstrap

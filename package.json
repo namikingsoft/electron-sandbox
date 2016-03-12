@@ -4,10 +4,11 @@
   "description": "",
   "main": ".server/app.js",
   "scripts": {
+    "postinstall": "typings install",
     "build": "gulp package",
     "start": "NODE_ENV=develop gulp server",
-    "test": "NODE_PATH=src mocha test/**/*.ts",
-    "test:watch": "npm run test -- --watch --reporter min"
+    "test": "gulp test",
+    "test:watch": "gulp test:watch"
   },
   "author": "",
   "license": "MIT",
@@ -31,13 +32,14 @@
     "babel-preset-react": "^6.5.0",
     "electron-connect": "^0.3.7",
     "electron-prebuilt": "^0.36.10",
-    "espower-typescript-babel": "^0.2.0",
+    "espower-loader": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-debug": "^2.1.2",
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-shell": "^0.5.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.3.0",
     "gulp-typescript": "^2.12.1",
@@ -48,7 +50,7 @@
     "mocha": "^2.4.5",
     "power-assert": "^1.3.1",
     "require-dir": "^0.3.0",
-    "typescript": "^1.8.7",
+    "typescript": "^1.9.0-dev.20160311",
     "typings": "^0.7.1"
   }
 }

@@ -6,9 +6,9 @@ const project = $.typescript.createProject('tsconfig.json', {
   typescript: require('typescript'),
 })
 
-const build = (dest, isWatch) => {
-  const isDevelop = dest === config.dir.server
-  return gulp.src(config.src.script)
+const build = (src, dest, isWatch) => {
+  const isDevelop = dest !== config.dir.dist
+  return gulp.src(src)
   .pipe($.if(isWatch, $.plumber()))
   .pipe($.if(isDevelop, $.sourcemaps.init()))
   .pipe($.typescript(project))
@@ -20,10 +20,21 @@ const build = (dest, isWatch) => {
   .pipe(gulp.dest(dest))
 }
 
-gulp.task('script',        () => build(config.dir.dist))
-gulp.task('script:server', () => build(config.dir.server))
-gulp.task('script:watch',  () => {
-  // @todo incremental build of typescript is difficult
-  build(config.dir.server, true)
-  $.watch(config.src.script, config.watch, () => build(config.dir.server, true))
+gulp.task('script',        () => build(config.src.script, config.dir.dist))
+gulp.task('script:server', () => build(config.src.script, config.dir.work.server))
+gulp.task('script:server:watch',  () => {
+  $.watch(config.src.script, config.watch, file => {
+    // @todo incremental build of typescript is difficult
+    build(config.src.script, config.dir.work.server, true)
+  })
+})
+
+gulp.task('script:test', () => {
+  return build([config.src.script, config.src.test], config.dir.work.test)
+})
+gulp.task('script:test:watch', () => {
+  $.watch([config.src.script, config.src.test], config.watch, () => {
+    // @todo incremental build of typescript is difficult
+    build([config.src.script, config.src.test], config.dir.work.test, true)
+  })
 })
