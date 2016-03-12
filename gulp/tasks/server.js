@@ -13,9 +13,13 @@ const pretask = [
 
 gulp.task('server', pretask, () => {
   electron.start();
-  gulp.start('watch')
-  setTimeout(() => {
-  // watch after 5 second for prebuild
+  gulp.start([
+    'script:server:watch',
+    'style:server:watch',
+    'image:server:watch',
+    'html:server:watch',
+  ])
+  { // watch
     let isRestart = false
     $.watch(config.server.restart, () => isRestart = true)
     $.watch(`${config.dir.work.server}/**/*`, () => {
@@ -26,5 +30,5 @@ gulp.task('server', pretask, () => {
         electron.reload()
       }
     })
-  }, 5000)
+  }
 })

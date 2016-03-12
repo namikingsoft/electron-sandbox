@@ -2,14 +2,17 @@ const gulp = require('gulp')
 const $ = require('gulp-load-plugins')()
 const config = require('../config')
 
-const build = (dest, isWatch) => {
-  return gulp.src(config.src.html)
-  .pipe(isWatch? $.watch(config.src.html, config.watch) : $.util.noop())
+const build = (src, dest, isWatch) => {
+  return gulp.src(src)
   .pipe($.if(isWatch, $.plumber()))
   .pipe($.if(!isWatch, $.useref()))
   .pipe(gulp.dest(dest))
 }
 
-gulp.task('html',              () => build(config.dir.dist))
-gulp.task('html:server',       () => build(config.dir.work.server))
-gulp.task('html:server:watch', () => build(config.dir.work.server, true))
+gulp.task('html',        () => build(config.src.html, config.dir.dist))
+gulp.task('html:server', () => build(config.src.html, config.dir.work.server))
+gulp.task('html:server:watch', () => {
+  $.watch(config.src.html, config.watch, file => {
+    build(file.path, config.dir.work.server, true)
+  })
+})
