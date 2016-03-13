@@ -1,7 +1,8 @@
 const dir = {
   src: './src',
-  dist: './dist',
   test: './test',
+  dist: './dist',
+  release: './release',
   work: {
     server: './.server',
     test: './.test',
@@ -26,4 +27,26 @@ const watch = {
   verbose: true,
 }
 
-module.exports = {dir, src, server, watch}
+const browserify = {
+  entry: `${dir.dist}/front.js`,
+  output: `${dir.dist}/front.js`,
+  tmpfile: `${dir.dist}/front.src.js`,
+  removes: [
+    `${dir.dist}/front.src.js`,
+    `${dir.dist}/actions`,
+    `${dir.dist}/components`,
+    `${dir.dist}/containers`,
+    `${dir.dist}/decorators`,
+    `${dir.dist}/domains`,
+    `${dir.dist}/reducers`,
+  ],
+}
+
+const package = {
+  name: 'ElectronApp',
+  platforms: ['win32', 'darwin', 'linux'],
+  arch: 'x64',        // x64 or ia32
+  version: '0.36.11', // electron version
+}
+
+module.exports = {dir, src, server, watch, browserify, package}
