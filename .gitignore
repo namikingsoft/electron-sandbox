@@ -1,4 +1,3 @@
-/.env
 /.test
 /.server
 /dist
@@ -6,3 +5,4 @@
 /typings
 /node_modules
 /npm-debug.log
+app.env
