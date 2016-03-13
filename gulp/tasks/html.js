@@ -3,9 +3,10 @@ const $ = require('gulp-load-plugins')()
 const config = require('../config')
 
 const build = (src, dest, isWatch) => {
+  const isDist = dest === config.dir.dist
   return gulp.src(src)
   .pipe($.if(isWatch, $.plumber()))
-  .pipe($.if(!isWatch, $.useref()))
+  .pipe($.if(isDist, $.useref()))
   .pipe(gulp.dest(dest))
 }
 
