@@ -1,7 +1,8 @@
-/.env
 /.test
 /.server
 /dist
+/release
 /typings
 /node_modules
 /npm-debug.log
+app.env

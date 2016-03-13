@@ -6,8 +6,8 @@ import {createStore, applyMiddleware} from 'redux'
 import reducers from './reducers'
 import App from './containers/App'
 
-// load env file @todo remove after later
-require('node-env-file')(`${__dirname}/../.env`)
+// load env file
+require('node-env-file')(`${__dirname}/app.env`)
 
 const createStoreWithMiddleware = applyMiddleware(
   require('redux-thunk').default

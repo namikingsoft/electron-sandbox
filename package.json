@@ -5,7 +5,7 @@
   "main": ".server/app.js",
   "scripts": {
     "postinstall": "typings install",
-    "build": "gulp package",
+    "package": "gulp package",
     "start": "NODE_ENV=develop gulp server",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
@@ -30,7 +30,10 @@
     "babel-cli": "^6.6.5",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
     "electron-connect": "^0.3.7",
+    "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.10",
     "espower-loader": "^1.0.0",
     "gulp": "^3.9.1",
@@ -51,6 +54,7 @@
     "power-assert": "^1.3.1",
     "require-dir": "^0.3.0",
     "typescript": "^1.9.0-dev.20160311",
-    "typings": "^0.7.1"
+    "typings": "^0.7.1",
+    "uglifyify": "^3.0.1"
   }
 }

@@ -7,7 +7,7 @@ const config = require('../config')
 const pretask = [
   'script:server',
   'style:server',
-  'image:server',
+  'asset:server',
   'html:server',
 ]
 
@@ -16,7 +16,7 @@ gulp.task('server', pretask, () => {
   gulp.start([
     'script:server:watch',
     'style:server:watch',
-    'image:server:watch',
+    'asset:server:watch',
     'html:server:watch',
   ])
   { // watch
