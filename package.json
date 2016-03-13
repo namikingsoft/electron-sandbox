@@ -5,10 +5,11 @@
   "main": ".server/app.js",
   "scripts": {
     "postinstall": "typings install",
+    "clean": "gulp clean",
     "package": "gulp package",
-    "start": "NODE_ENV=develop gulp server",
     "test": "gulp test",
-    "test:watch": "gulp test:watch"
+    "test:watch": "gulp test:watch",
+    "start": "NODE_ENV=develop gulp server"
   },
   "author": "",
   "license": "MIT",
