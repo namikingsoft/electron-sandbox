@@ -18,9 +18,7 @@ const src = {
 }
 
 const server= {
-  restart: [
-    `${dir.src}/app.ts`,
-  ],
+  coolDownMsec: 1000,
 }
 
 const watch = {

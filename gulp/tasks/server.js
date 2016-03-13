@@ -20,15 +20,16 @@ gulp.task('server', pretask, () => {
     'html:server:watch',
   ])
   { // watch
-    let isRestart = false
-    $.watch(config.server.restart, () => isRestart = true)
+    let isCoolDown = false
     $.watch(`${config.dir.work.server}/**/*`, () => {
-      if (isRestart) {
-        electron.restart()
-        isRestart = false
-      } else {
-        electron.reload()
+      if (isCoolDown) {
+        return
       }
+      electron.restart()
+      isCoolDown = true
+      setTimeout(() => isCoolDown = false, config.server.coolDownMsec)
+      // @todo strange motion when multiple window
+      //electron.reload()
     })
   }
 })
