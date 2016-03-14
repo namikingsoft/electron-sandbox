@@ -24,6 +24,10 @@ const src = {
 const server= {
   coolDownMsec: 1000,
   restartDelayMsec: 325,
+  restart: [
+    `${dir.src}/app.ts`,
+    `${dir.src}/windows/*.ts`,
+  ],
 }
 
 const watch = {
