@@ -11,7 +11,7 @@ const initialState: Post = new Post({
   letters: Seq.of<Letter>(),
 })
 
-export default function messages(
+export default function post(
   state: Post = initialState,
   action: PostAction
 ): Post {
