@@ -25,9 +25,9 @@ gulp.task('server', pretask, () => {
       if (isCoolDown) {
         return
       }
-      electron.restart()
       isCoolDown = true
       setTimeout(() => isCoolDown = false, config.server.coolDownMsec)
+      setTimeout(() => electron.restart(), config.server.restartDelayMsec)
       // @todo strange motion when multiple window
       //electron.reload()
     })

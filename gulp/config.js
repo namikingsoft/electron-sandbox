@@ -23,6 +23,7 @@ const src = {
 
 const server= {
   coolDownMsec: 1000,
+  restartDelayMsec: 325,
 }
 
 const watch = {
