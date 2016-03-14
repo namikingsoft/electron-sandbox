@@ -15,7 +15,7 @@ const src = {
     `${dir.src}/**/styles/index.styl`,
     `./node_modules/purecss/build/pure.css`,
   ],
-  asset: `${dir.src}/**/*.{json,png,env}`,
+  asset: `${dir.src}/**/*.{json,png}`,
   html: `${dir.src}/**/*.html`,
   test: `${dir.test}/**/*.spec.{js,jsx,ts,tsx}`,
   styleWatch: `${dir.src}/**/*.styl`,

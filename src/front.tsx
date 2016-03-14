@@ -9,9 +9,6 @@ import StreamContainer from './containers/StreamContainer'
 import SettingContainer from './containers/SettingContainer'
 import reducers from './reducers'
 
-// load env file
-require('node-env-file')(`${__dirname}/app.env`)
-
 const createStoreWithMiddleware = applyMiddleware(
   require('redux-thunk').default
 )(createStore)
