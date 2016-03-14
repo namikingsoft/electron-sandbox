@@ -44,7 +44,3 @@ gulp.task('package:pre:build', [
   'asset',
   'html',
 ], done => done())
-gulp.task('package:pre:clean:post', ['package:pre:clean'], done => done())
-gulp.task('package:pre:clean', done => {
-  del(config.dir.dist).then(pathes => done())
-})

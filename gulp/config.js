@@ -33,15 +33,6 @@ const browserify = {
   entry: `${dir.dist}/front.js`,
   output: `${dir.dist}/front.js`,
   tmpfile: `${dir.dist}/front.src.js`,
-  removes: [
-    `${dir.dist}/front.src.js`,
-    `${dir.dist}/actions`,
-    `${dir.dist}/components`,
-    `${dir.dist}/containers`,
-    `${dir.dist}/decorators`,
-    `${dir.dist}/domains`,
-    `${dir.dist}/reducers`,
-  ],
 }
 
 const package = {
