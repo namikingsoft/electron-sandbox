@@ -14,8 +14,5 @@ export default function freeze<T extends Function>(Target: T): T {
   newConstructor.prototype = Object.create(Target.prototype)
   newConstructor.prototype.constructor = Target
 
-  // @todo
-  //return <any>newConstructor
-  const newConstructorAny: any = newConstructor
-  return newConstructorAny
+  return <any>newConstructor
 }
