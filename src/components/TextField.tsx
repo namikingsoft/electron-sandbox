@@ -11,7 +11,7 @@ interface State {
   text: string
 }
 
-export default class Message extends Component<Props, State> {
+export default class TextField extends Component<Props, State> {
   constructor(props: Props) {
     super()
     this.state = {
