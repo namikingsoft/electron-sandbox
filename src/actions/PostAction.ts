@@ -1,15 +1,22 @@
 import Action, {Dispatcher, Dispatch} from './Action'
 import Letter from '../domains/Letter'
 
+const slack = require('slack')
+const bot = slack.rtm.client()
+
 export interface PostAction extends Action {
   type: string
   letter?: Letter
 }
 
-export function startListen(text: string): Dispatcher {
+export function connectSlack(token: string): Dispatcher {
+  let isConnect = false
   return (dispatch: Dispatch) => {
-    const slack = require('slack')
-    const bot = slack.rtm.client()
+    if (isConnect) {
+      bot.close()
+      isConnect = false
+    }
+    bot.hello(() => isConnect = true)
     bot.message((message: any) => {
       const text = message.text
       const letter = new Letter({text})
@@ -17,7 +24,7 @@ export function startListen(text: string): Dispatcher {
       // @todo magic number
       setTimeout(() => dispatch(removeLetter(letter)), 12000)
     })
-    bot.listen({token: process.env.SLACK_TOKEN})
+    bot.listen({token})
   }
 }
 

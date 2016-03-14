@@ -1,0 +1,32 @@
+import {remote} from 'electron'
+import MainWindow from '../windows/MainWindow'
+
+const MAIN_WINDOW_KEY = '__MAIN_WINDOW'
+
+export default class GlobalRepository {
+
+  static get mainWindow(): MainWindow {
+    return this.get(MAIN_WINDOW_KEY)
+  }
+  static set mainWindow(mainWindow: MainWindow) {
+    this.set(MAIN_WINDOW_KEY, mainWindow)
+  }
+
+  private static get(key: string): any {
+    if (remote) {
+      return remote.getGlobal(<string>key)
+    } else {
+      const globalAny = <any>global
+      return globalAny[key]
+    }
+  }
+
+  private static set(key: string, value: any): void {
+    if (remote) {
+      throw new Error('use only main process')
+    } else {
+      const globalAny = <any>global
+      globalAny[key] = value
+    }
+  }
+}

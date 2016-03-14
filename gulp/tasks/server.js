@@ -21,13 +21,19 @@ gulp.task('server', pretask, () => {
   ])
   { // watch
     let isRestart = false
+    let isCoolDown = false
     $.watch(config.server.restart, () => isRestart = true)
     $.watch(`${config.dir.work.server}/**/*`, () => {
+      if (isCoolDown) {
+        return
+      }
+      isCoolDown = true
+      setTimeout(() => isCoolDown = false, config.server.coolDownMsec)
       if (isRestart) {
-        electron.restart()
+        setTimeout(() => electron.restart(), config.server.restartDelayMsec)
         isRestart = false
       } else {
-        electron.reload()
+        setTimeout(() => electron.reload(), config.server.restartDelayMsec)
       }
     })
   }

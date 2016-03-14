@@ -5,17 +5,18 @@ import {connect} from 'react-redux'
 import {List} from 'immutable'
 import PostCanvas from '../components/PostCanvas'
 import Post from '../domains/Post'
+import Setting from '../domains/Setting'
 import * as PostAction from '../actions/PostAction'
 
 interface Props {
   post?: Post
+  setting?: Setting
   postAction?: {
-    startListen: ()=>void,
-    addMessage: (text:string)=>void,
+    connectSlack: (token: string)=>void,
   }
 }
 
-class App extends Component<Props, any> {
+class StreamContainer extends Component<Props, any> {
   constructor() {
     super()
   }
@@ -30,17 +31,31 @@ class App extends Component<Props, any> {
   }
 
   componentDidMount() {
-    const {startListen, addMessage} = this.props.postAction
-    startListen()
-    //addMessage('Added message')
+    const {setting} = this.props
+    this.connectSlack(setting.slackToken)
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const setting = this.props.setting
+    const settingPrev = prevProps.setting
+    if (setting.slackToken !== settingPrev.slackToken) {
+      this.connectSlack(setting.slackToken)
+    }
+  }
+
+  private connectSlack(slackToken: string) {
+    if (slackToken) {
+      this.props.postAction.connectSlack(slackToken)
+    }
   }
 }
 
 export default connect(
   state => new Object({
     post: state.post,
+    setting: state.setting,
   }),
   dispatch => new Object({
     postAction: bindActionCreators(PostAction, dispatch),
   })
-)(App)
+)(StreamContainer)

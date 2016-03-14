@@ -5,36 +5,26 @@ import {
   Menu,
   Tray,
   screen,
-  BrowserWindow,
 } from 'electron'
+import MainWindow from './windows/MainWindow'
+import SettingWindow from './windows/SettingWindow'
 
-// source map for node
 if (process.env.NODE_ENV === 'develop') {
+  // source map for node
   require('source-map-support').install()
 }
 
 app.on('ready', () => {
-  // window
-  const screenSize = screen.getPrimaryDisplay().size;
-  const mainWindow: any = new BrowserWindow({
-    width: screenSize.width,
-    height: screenSize.height,
-    center: true,
-    transparent: true,
-    frame: false,
-    resizable: false,
-    alwaysOnTop: true,
-  });
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
-  mainWindow.setVisibleOnAllWorkspaces(true)
-  mainWindow.on('closed', () => app.quit())
-  mainWindow.setIgnoreMouseEvents(true)
-  //mainWindow.webContents.openDevTools()
+  // windows
+  const mainWindow = MainWindow.getInstance()
 
   // tray
   const tray = new Tray(`${__dirname}/images/icon.png`)
   const menu = Menu.buildFromTemplate([
-    {label: "終了", click: () => mainWindow.close()}
+    {label: "設定", click: () => {
+      const settingWindow = new SettingWindow()
+    }},
+    {label: "終了", click: () => mainWindow.close()},
   ]);
   tray.setToolTip(app.getName());
   tray.setContextMenu(menu);
