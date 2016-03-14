@@ -11,10 +11,14 @@ const dir = {
 
 const src = {
   script: `${dir.src}/**/*.{js,jsx,ts,tsx}`,
-  style: `${dir.src}/**/*.styl`,
+  style: [
+    `${dir.src}/**/styles/index.styl`,
+    `./node_modules/purecss/build/pure.css`,
+  ],
   asset: `${dir.src}/**/*.{json,png,env}`,
   html: `${dir.src}/**/*.html`,
   test: `${dir.test}/**/*.spec.{js,jsx,ts,tsx}`,
+  styleWatch: `${dir.src}/**/*.styl`,
 }
 
 const server= {
