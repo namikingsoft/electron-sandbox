@@ -25,9 +25,9 @@ export default class MainWindow {
       resizable: false,
       alwaysOnTop: true,
     })
-    this.window.loadURL(BASE_URL)
     this.window.setVisibleOnAllWorkspaces(true)
     this.window.on('closed', () => app.quit())
+    this.window.loadURL(BASE_URL)
 
     // only darwin @todo tsd
     const thisAny = <any>this.window
