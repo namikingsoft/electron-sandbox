@@ -5,6 +5,8 @@ import freeze from '../decorators/freeze'
 export default class Letter {
   constructor(private param: {
     text: string,
+    user: string,
+    channel: string,
     uid?: UID,
   }) {
     if (!this.param.uid) {
@@ -20,10 +22,17 @@ export default class Letter {
     return this.param.text
   }
 
+  get user(): string {
+    return this.param.user
+  }
+
+  get channel(): string {
+    return this.param.channel
+  }
+
   get textDisplay(): string {
     if (this.text) {
-      return this.text
-      .replace(/<[^<>]*>/g, '')
+      return this.text.replace(/<[^<>]*>/g, '')
     } else  {
       return ''
     }

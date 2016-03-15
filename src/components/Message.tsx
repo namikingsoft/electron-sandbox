@@ -25,6 +25,10 @@ export default class Message extends Component<Props, State> {
     const {letter} = this.props
     return (
       <div className="Message" style={this.state}>
+        <div className="Message__meta">
+          <span className="Message__meta__user">{letter.user}</span>
+          <span className="Message__meta__channel">{letter.channel}</span>
+        </div>
         <span className="Message__label" ref="label">{letter.textDisplay}</span>
       </div>
     )

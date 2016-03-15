@@ -5,6 +5,23 @@
   white-space nowrap
   transition left 10s linear
 
+  &__meta
+    color #fff
+    margin-bottom -0.5em
+    text-shadow 1px 1px 1px #000,
+      -1px 1px 1px #000,
+      1px -1px 1px #000,
+      -1px -1px 1px #000
+    &__user
+      margin-right 1em
+      &:before
+        color #f33
+        content '@'
+    &__channel
+      &:before
+        color #3f3
+        content '#'
+
   &__label
     font-size 2em
     font-weight bold

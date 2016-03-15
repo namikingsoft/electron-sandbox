@@ -4,6 +4,20 @@ import Letter from '../domains/Letter'
 const slack = require('slack')
 const bot = slack.rtm.client()
 
+interface MessageRow {
+  text: string
+  user: string
+  channel: string
+}
+
+interface UsersRow {
+  members: Array<{id: string, name: string}>
+}
+
+interface ChannelsRow {
+  channels: Array<{id: string, name: string}>
+}
+
 export interface PostAction extends Action {
   type: string
   letter?: Letter
@@ -11,15 +25,34 @@ export interface PostAction extends Action {
 
 export function connectSlack(token: string): Dispatcher {
   let isConnect = false
+  let userInfo: {[index:string]: string} = {}
+  let channelInfo: {[index:string]: string} = {}
   return (dispatch: Dispatch) => {
     if (isConnect) {
       bot.close()
       isConnect = false
     }
-    bot.hello(() => isConnect = true)
-    bot.message((message: any) => {
+    bot.hello(() => {
+      isConnect = true
+      slack.users.list({token}, (err: Error, data: UsersRow) => {
+        if (err) {
+          throw err
+        }
+        data.members.forEach(x => userInfo[x.id] = x.name)
+      })
+      slack.channels.list({token}, (err: Error, data: ChannelsRow) => {
+        if (err) {
+          throw err
+        }
+        data.channels.forEach(x => channelInfo[x.id] = x.name)
+      })
+    })
+    bot.message((message: MessageRow) => {
+      console.log(message)
       const text = message.text
-      const letter = new Letter({text})
+      const user = userInfo[message.user]
+      const channel = channelInfo[message.channel]
+      const letter = new Letter({text, user, channel})
       dispatch(addLetter(letter))
       // @todo magic number
       setTimeout(() => dispatch(removeLetter(letter)), 12000)
