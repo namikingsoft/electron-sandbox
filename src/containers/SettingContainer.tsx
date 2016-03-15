@@ -11,7 +11,8 @@ interface Props {
   setting?: Setting
   action?: {
     updateSetting: (setting: Setting)=>void,
-    closeSetting: ()=>void,
+    cancelSetting: ()=>void,
+    saveSetting: ()=>void,
   }
 }
 
@@ -24,7 +25,10 @@ class SettingContainer extends Component<Props, any> {
           label="Slack Token"
           value={setting.slackToken}
           onChange={text => this.changeSlackToken(text)} />
-        <Button onClick={() => action.closeSetting()}>適応する</Button>
+        <div className="Button pure-controls">
+          <Button onClick={action.saveSetting} mode="primary">Save</Button>
+          <Button onClick={action.cancelSetting}>Cancel</Button>
+        </div>
       </div>
     )
   }

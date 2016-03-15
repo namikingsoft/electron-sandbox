@@ -1,7 +1,9 @@
 import {remote} from 'electron'
 import MainWindow from '../windows/MainWindow'
+import SettingWindow from '../windows/SettingWindow'
 
 const MAIN_WINDOW_KEY = '__MAIN_WINDOW'
+const SETTING_WINDOW_KEY = '__SETTING_WINDOW'
 
 export default class GlobalRepository {
 
@@ -10,6 +12,12 @@ export default class GlobalRepository {
   }
   static set mainWindow(mainWindow: MainWindow) {
     this.set(MAIN_WINDOW_KEY, mainWindow)
+  }
+  static get settingWindow(): SettingWindow {
+    return this.get(SETTING_WINDOW_KEY)
+  }
+  static set settingWindow(settingWindow: SettingWindow) {
+    this.set(SETTING_WINDOW_KEY, settingWindow)
   }
 
   private static get(key: string): any {

@@ -17,14 +17,13 @@ if (process.env.NODE_ENV === 'develop') {
 app.on('ready', () => {
   // windows
   const mainWindow = MainWindow.getInstance()
+  const settingWindow = SettingWindow.getInstance()
 
   // tray
   const tray = new Tray(`${__dirname}/images/icon.png`)
   const menu = Menu.buildFromTemplate([
-    {label: "設定", click: () => {
-      const settingWindow = new SettingWindow()
-    }},
-    {label: "終了", click: () => mainWindow.close()},
+    {label: "Setting", click: () => settingWindow.show()},
+    {label: "Quit", click: () => app.quit()},
   ]);
   tray.setToolTip(app.getName());
   tray.setContextMenu(menu);

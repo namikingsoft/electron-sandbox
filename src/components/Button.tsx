@@ -3,20 +3,19 @@ import {Component, PropTypes, FormEvent} from 'react'
 
 interface Props {
   children?: Array<Component<any,any>>
+  mode?: string
   onClick?: ()=>void
 }
 
 export default class Button extends Component<Props, any> {
   render() {
-    const {children} = this.props
+    const mode = this.props.mode || 'default'
     return (
-      <div className="Button pure-controls">
-        <button
-          className="pure-button pure-button-primary"
-          onClick={e => this.handleClick(e)}>
-          {children}
-        </button>
-      </div>
+      <button
+        className={`Button pure-button pure-button-${mode}`}
+        onClick={e => this.handleClick(e)}>
+        {this.props.children}
+      </button>
     )
   }
 

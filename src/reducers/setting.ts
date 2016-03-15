@@ -1,7 +1,8 @@
 import {
   SettingAction,
   UPDATE_SETTING,
-  CLOSE_SETTING,
+  CANCEL_SETTING,
+  SAVE_SETTING,
 } from '../actions/SettingAction'
 import Setting from '../domains/Setting'
 import GlobalRepository from '../domains/GlobalRepository'
@@ -18,10 +19,14 @@ export default function setting(
   switch (action.type) {
   case UPDATE_SETTING:
     return action.setting
-  case CLOSE_SETTING:
+  case CANCEL_SETTING:
+    GlobalRepository.settingWindow.hide()
+    break
+  case SAVE_SETTING:
     localStorage['slackToken'] = state.slackToken
     GlobalRepository.mainWindow.reload()
-    remote.getCurrentWindow().close()
+    GlobalRepository.settingWindow.hide()
+    break
   }
   return state
 }
