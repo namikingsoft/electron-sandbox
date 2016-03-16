@@ -4,6 +4,7 @@
     "jsx": "react",
     "sourceMap": true,
     "noImplicitAny": true,
+    "noEmitOnError": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
     "experimentalDecorators": true
