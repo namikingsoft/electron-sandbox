@@ -11,3 +11,19 @@ gulp.task('clean', done => {
     config.dir.work.server,
   ]).then(pathes => done())
 })
+
+gulp.task('clean:dist', done => {
+  del(config.dir.dist).then(pathes => done())
+})
+
+gulp.task('clean:release', done => {
+  del(config.dir.release).then(pathes => done())
+})
+
+gulp.task('clean:test', done => {
+  del(config.dir.test).then(pathes => done())
+})
+
+gulp.task('clean:server', done => {
+  del(config.dir.server).then(pathes => done())
+})

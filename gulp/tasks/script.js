@@ -1,5 +1,6 @@
 const gulp = require('gulp')
 const $ = require('gulp-load-plugins')()
+const del = require('del')
 const config = require('../config')
 
 const project = $.typescript.createProject('tsconfig.json', {
@@ -30,11 +31,12 @@ gulp.task('script:server:watch',  () => {
 })
 
 gulp.task('script:test', () => {
+  del.sync(config.dir.work.test) // for stop typescript compile error
   return build([config.src.script, config.src.test], config.dir.work.test)
 })
 gulp.task('script:test:watch', () => {
   $.watch([config.src.script, config.src.test], config.watch, () => {
-    // @todo incremental build of typescript is difficult
+    del.sync(config.dir.work.test) // for stop typescript compile error
     build([config.src.script, config.src.test], config.dir.work.test, true)
   })
 })
