@@ -29,7 +29,7 @@ export default class Message extends Component<Props, State> {
           <span className="Message__meta__user">{letter.user}</span>
           <span className="Message__meta__channel">{letter.channel}</span>
         </div>
-        <span className="Message__label" ref="label">{letter.textDisplay}</span>
+        <span className="Message__label" ref="label">{letter.message}</span>
       </div>
     )
   }
