@@ -30,13 +30,7 @@ gulp.task('script:server:watch',  () => {
   })
 })
 
+// for test
 gulp.task('script:test', () => {
-  del.sync(config.dir.work.test) // for stop typescript compile error
   return build([config.src.script, config.src.test], config.dir.work.test)
-})
-gulp.task('script:test:watch', () => {
-  $.watch([config.src.script, config.src.test], config.watch, () => {
-    del.sync(config.dir.work.test) // for stop typescript compile error
-    build([config.src.script, config.src.test], config.dir.work.test, true)
-  })
 })
