@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Component, PropTypes} from 'react'
 import Letter from '../domains/Letter'
+import {STREAM_TRANS_MSEC} from '../constants/AppConst'
 
 interface Props {
   letter: Letter
@@ -23,8 +24,10 @@ export default class Message extends Component<Props, State> {
 
   render() {
     const {letter} = this.props
+    const style: any = this.state
+    style['transition'] = `left ${STREAM_TRANS_MSEC}ms linear`
     return (
-      <div className="Message" style={this.state}>
+      <div className="Message" style={style}>
         <div className="Message__meta">
           <span className="Message__meta__user">{letter.user}</span>
           <span className="Message__meta__channel">{letter.channel}</span>

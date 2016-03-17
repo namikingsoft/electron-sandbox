@@ -5,14 +5,17 @@ import {connect} from 'react-redux'
 import {List} from 'immutable'
 import PostCanvas from '../components/PostCanvas'
 import Post from '../domains/Post'
+import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
 import * as PostAction from '../actions/PostAction'
+import {STREAM_TRANS_MSEC} from '../constants/AppConst'
 
 interface Props {
   post?: Post
   setting?: Setting
   postAction?: {
     connectSlack: (token: string)=>void,
+    removeLetter: (letter: Letter)=>void,
   }
 }
 
@@ -36,10 +39,15 @@ class StreamContainer extends Component<Props, any> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    const setting = this.props.setting
-    const settingPrev = prevProps.setting
-    if (setting.slackToken !== settingPrev.slackToken) {
-      this.connectSlack(setting.slackToken)
+    if (this.props.post !== prevProps.post) {
+      // set remove timer at added letters
+      const {removeLetter} = this.props.postAction
+      this.props.post.letters
+      .filterNot(x => prevProps.post.letters.includes(x))
+      .forEach(x => setTimeout(() => removeLetter(x), STREAM_TRANS_MSEC))
+    }
+    if (this.props.setting !== prevProps.setting) {
+      this.connectSlack(this.props.setting.slackToken)
     }
   }
 
