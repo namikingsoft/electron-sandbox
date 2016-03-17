@@ -3,10 +3,10 @@ import {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {List} from 'immutable'
-import PostCanvas from '../components/PostCanvas'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
+import StreamNotification from '../components/StreamNotification'
 import * as PostAction from '../actions/PostAction'
 import {STREAM_TRANS_MSEC} from '../constants/AppConst'
 
@@ -28,7 +28,7 @@ class StreamContainer extends Component<Props, any> {
     const {post} = this.props
     return (
       <div className="layout-app">
-        <PostCanvas post={post} />
+        {post.letters.map(x => <StreamNotification key={x.id} letter={x} />)}
       </div>
     )
   }

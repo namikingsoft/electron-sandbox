@@ -13,7 +13,7 @@ interface State {
   left: number
 }
 
-export default class Message extends Component<Props, State> {
+export default class StreamNotification extends Component<Props, State> {
   constructor() {
     super()
     this.state = {
