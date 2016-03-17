@@ -21,9 +21,9 @@ gulp.task('clean:release', done => {
 })
 
 gulp.task('clean:test', done => {
-  del(config.dir.test).then(pathes => done())
+  del(config.dir.work.test).then(pathes => done())
 })
 
 gulp.task('clean:server', done => {
-  del(config.dir.server).then(pathes => done())
+  del(config.dir.work.server).then(pathes => done())
 })
