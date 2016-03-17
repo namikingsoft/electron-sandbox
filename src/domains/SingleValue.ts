@@ -1,3 +1,6 @@
+import freeze from '../decorators/freeze'
+
+@freeze
 export default class SingleValue<T> {
   constructor(
     private value: T
