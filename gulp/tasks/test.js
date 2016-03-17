@@ -17,7 +17,7 @@ gulp.task('test', () => {
 })
 
 gulp.task('test:watch', () => {
-  const build = () =>runSequence(
+  const build = () => runSequence(
     'clean:test',
     'script:test',
     'test:shell:mocha:min'
