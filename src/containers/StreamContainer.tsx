@@ -26,9 +26,15 @@ class StreamContainer extends Component<Props, any> {
 
   render() {
     const {post} = this.props
+    const {removeLetter} = this.props.postAction
     return (
       <div className="layout-app">
-        {post.letters.map(x => <StreamNotification key={x.id} letter={x} />)}
+        {post.letters.map(x =>
+          <StreamNotification
+            key={x.id} letter={x}
+            onMount={() => setTimeout(() => removeLetter(x), STREAM_TRANS_MSEC)}
+          />
+        )}
       </div>
     )
   }
@@ -39,13 +45,6 @@ class StreamContainer extends Component<Props, any> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (this.props.post !== prevProps.post) {
-      // set remove timer at added letters
-      const {removeLetter} = this.props.postAction
-      this.props.post.letters
-      .filterNot(x => prevProps.post.letters.includes(x))
-      .forEach(x => setTimeout(() => removeLetter(x), STREAM_TRANS_MSEC))
-    }
     if (this.props.setting !== prevProps.setting) {
       this.connectSlack(this.props.setting.slackToken)
     }

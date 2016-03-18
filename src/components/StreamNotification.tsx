@@ -6,6 +6,7 @@ import {STREAM_TRANS_MSEC} from '../constants/AppConst'
 
 interface Props {
   letter: Letter
+  onMount?: ()=>void
 }
 
 interface State {
@@ -53,6 +54,7 @@ export default class StreamNotification extends Component<Props, State> {
         left: -label.offsetWidth - 300, // @todo asobi
       })
     }, 0)
+    this.props.onMount()
   }
 
   componentWillUnmount() {
