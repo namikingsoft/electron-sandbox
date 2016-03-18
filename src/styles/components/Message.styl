@@ -1,4 +1,7 @@
 .Message
+  display flex
+  flex-direction row
+  align-items center
   position absolute
   top 0
   left 0
@@ -6,28 +9,45 @@
   // rewrite js
   //transition left 10s linear
 
-  &__meta
-    color #fff
-    margin-bottom -0.5em
-    text-shadow 1px 1px 1px #000,
-      -1px 1px 1px #000,
-      1px -1px 1px #000,
-      -1px -1px 1px #000
-    &__user
-      margin-right 1em
-      &:before
-        color #f33
-        content '@'
-    &__channel
-      &:before
-        color #3f3
-        content '#'
+  &__image
+    margin-right 10px
 
-  &__label
-    font-size 2em
-    font-weight bold
-    color white
-    text-shadow 2px 2px 1px #000,
-      -2px 2px 1px #000,
-      2px -2px 1px #000,
-      -2px -2px 1px #000
+    img
+      width 50px
+      height 50px
+      box-shadow 1px 1px 0px rgba(0,0,0,0.2),
+        -1px 1px 0px rgba(0,0,0,0.2),
+        1px -1px 0px rgba(0,0,0,0.2),
+        -1px -1px 0px rgba(0,0,0,0.2)
+      border-radius 100px
+
+  &__main
+
+    &__meta
+      color #fff
+      font-size 1.15em
+      margin-bottom -0.02em
+      text-shadow 1px 1px 1px #000,
+        -1px 1px 1px #000,
+        1px -1px 1px #000,
+        -1px -1px 1px #000
+      &__user
+        margin-right 1em
+        &:before
+          color #f33
+          content '@'
+      &__channel
+        &:before
+          color #3f3
+          content '#'
+
+    &__label
+      font-size 1.9em
+      font-weight bold
+      line-height 1
+      margin-bottom 5px
+      color white
+      text-shadow 2px 2px 1px #000,
+        -2px 2px 1px #000,
+        2px -2px 1px #000,
+        -2px -2px 1px #000

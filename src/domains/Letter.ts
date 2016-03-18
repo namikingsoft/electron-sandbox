@@ -21,15 +21,15 @@ export default class Letter {
     return this.param.uid.toString()
   }
 
-  get user(): string {
-    return this.param.user.name
+  get user(): User {
+    return this.param.user
   }
 
-  get channel(): string {
-    return this.param.channel.name
+  get channel(): Channel {
+    return this.param.channel
   }
 
-  get message(): string {
-    return this.param.message.toDisplay()
+  get message(): Message {
+    return this.param.message
   }
 }

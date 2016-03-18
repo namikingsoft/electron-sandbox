@@ -7,17 +7,20 @@ import * as assert from 'power-assert'
 describe('Letter', function() {
 
   let letter: Letter
+  let user: User
+  let channel: Channel
+  let message: Message
 
   before(() => {
-    const user = new User({
+    user = new User({
       id: 'ID',
       name: 'User',
     })
-    const channel = new Channel({
+    channel = new Channel({
       id: 'ID',
       name: 'Channel',
     })
-    const message = new Message('Text')
+    message = new Message('Text')
     letter = new Letter({
       user, channel, message,
     })
@@ -37,19 +40,19 @@ describe('Letter', function() {
 
   describe('user', () => {
     it('should be return initial value', () => {
-      assert(letter.user === 'User')
+      assert(letter.user === user)
     })
   })
 
   describe('channel', () => {
     it('should be return initial value', () => {
-      assert(letter.channel === 'Channel')
+      assert(letter.channel === channel)
     })
   })
 
   describe('message', () => {
     it('should be return initial value', () => {
-      assert(letter.message === 'Text')
+      assert(letter.message === message)
     })
   })
 

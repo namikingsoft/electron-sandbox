@@ -1,12 +1,19 @@
 import User from 'domains/User'
+import {NO_IMAGE_URL} from 'constants/AppConst'
 import * as assert from 'power-assert'
 
 describe('User', function() {
 
   let user: User
+  let userNoImage: User
 
   before(() => {
     user = new User({
+      id: 'ID',
+      name: 'Name',
+      image: 'Image',
+    })
+    userNoImage = new User({
       id: 'ID',
       name: 'Name',
     })
@@ -27,6 +34,19 @@ describe('User', function() {
   describe('name', () => {
     it('should be return initial value', () => {
       assert(user.name === 'Name')
+    })
+  })
+
+  describe('image', () => {
+    context('when defined', () => {
+      it('should be return initial value', () => {
+        assert(user.image === 'Image')
+      })
+    })
+    context('when undefined', () => {
+      it('should be return no image url', () => {
+        assert(userNoImage.image === NO_IMAGE_URL)
+      })
     })
   })
 })
