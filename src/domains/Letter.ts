@@ -1,4 +1,4 @@
-import UID from './UID'
+import UniqueID from './UniqueID'
 import User from './User'
 import Channel from './Channel'
 import Message from './Message'
@@ -10,10 +10,10 @@ export default class Letter {
     user: User,
     channel: Channel,
     message: Message,
-    uid?: UID,
+    uid?: UniqueID,
   }) {
     if (!this.param.uid) {
-      this.param.uid = new UID()
+      this.param.uid = new UniqueID()
     }
   }
 

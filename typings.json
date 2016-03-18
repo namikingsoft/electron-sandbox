@@ -6,7 +6,6 @@
     "bluebird": "registry:dt/bluebird#2.0.0+20160209044412",
     "empower": "registry:dt/empower#0.0.0+20141113152232",
     "github-electron": "registry:dt/github-electron#0.36.3+20160229022412",
-    "lodash": "registry:dt/lodash#3.10.0+20160127144039",
     "mocha": "registry:dt/mocha#2.2.5+20151023103246",
     "node": "registry:dt/node#4.0.0+20160226132328",
     "node-uuid": "registry:dt/node-uuid#0.0.0+20160225050709",

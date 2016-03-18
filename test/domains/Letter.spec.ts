@@ -34,7 +34,8 @@ describe('Letter', function() {
 
   describe('id', () => {
     it('should be return identify string', () => {
-      assert(/[0-9a-f\-]+/.test(letter.id))
+      assert(typeof letter.id === 'string')
+      assert(letter.id.length > 0)
     })
   })
 
