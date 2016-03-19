@@ -1,6 +1,8 @@
+import renameFunction from '../utils/renameFunction'
+
 export default function freeze<T extends Function>(Target: T): T {
 
-  const newConstructor = function (...args: any[]) {
+  const newConstructor = renameFunction(Target.name, function(...args: any[]) {
     Target.apply(this, args)
     for (const key in this) {
       const val = this[key]
@@ -9,7 +11,7 @@ export default function freeze<T extends Function>(Target: T): T {
       }
     }
     Object.freeze(this)
-  }
+  })
 
   newConstructor.prototype = Object.create(Target.prototype)
   newConstructor.prototype.constructor = Target

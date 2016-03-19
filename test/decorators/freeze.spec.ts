@@ -33,4 +33,8 @@ describe('freeze', function() {
       })
     })
   })
+
+  it('does not change constructor name from original', () => {
+    assert(SampleObject.name === 'SampleObject')
+  })
 })
