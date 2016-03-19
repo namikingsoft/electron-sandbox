@@ -1,5 +1,5 @@
 import User from 'domains/User'
-import {NO_IMAGE_URL} from 'constants/AppConst'
+import {NO_IMAGE_URL} from 'app.const'
 import * as assert from 'power-assert'
 
 describe('User', function() {

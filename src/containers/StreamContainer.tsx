@@ -8,7 +8,7 @@ import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
 import StreamNotification from '../components/StreamNotification'
 import * as PostAction from '../actions/PostAction'
-import {STREAM_TRANS_MSEC} from '../constants/AppConst'
+import {STREAM_TRANS_MSEC} from '../app.const'
 
 interface Props {
   post?: Post
