@@ -48,6 +48,13 @@ const browserify = {
   removes: [
     `${dir.dist}/app.src.js`,
     `${dir.dist}/front.src.js`,
+    `${dir.dist}/actions`,
+    `${dir.dist}/components`,
+    `${dir.dist}/containers`,
+    `${dir.dist}/decorators`,
+    `${dir.dist}/domains`,
+    `${dir.dist}/reducers`,
+    `${dir.dist}/windows`,
   ],
 }
 
