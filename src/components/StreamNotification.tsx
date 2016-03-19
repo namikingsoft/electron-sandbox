@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Component, PropTypes} from 'react'
 import Letter from '../domains/Letter'
-import {STREAM_TRANS_MSEC} from '../constants/AppConst'
+import {STREAM_TRANS_MSEC} from '../app.const'
 
 interface Props {
   letter: Letter

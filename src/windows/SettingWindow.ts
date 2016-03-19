@@ -5,7 +5,7 @@ import {
 } from 'electron'
 import {
   BASE_URL,
-} from '../constants/AppConst'
+} from '../app.const'
 import GlobalRepository from '../domains/GlobalRepository'
 
 // alias class @todo cannot define 'private window: BrowserWindow'

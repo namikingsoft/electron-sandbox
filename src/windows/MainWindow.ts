@@ -5,7 +5,7 @@ import {
 } from 'electron'
 import {
   BASE_URL,
-} from '../constants/AppConst'
+} from '../app.const'
 import GlobalRepository from '../domains/GlobalRepository'
 
 // alias class @todo cannot define 'private window: BrowserWindow'
@@ -33,10 +33,10 @@ export default class MainWindow {
     const thisAny = <any>this.window
     thisAny.setIgnoreMouseEvents(true)
 
-    // enable devtools
-    //this.window.webContents.openDevTools()
-    //this.window.setAlwaysOnTop(false)
-    //thisAny.setIgnoreMouseEvents(false)
+    // enable devtools on development
+    if (process.env.NODE_ENV === 'develop') {
+      this.window.webContents.openDevTools()
+    }
   }
 
   close() {

@@ -17,7 +17,6 @@
     "babel-polyfill": "^6.6.1",
     "bluebird": "^3.3.4",
     "immutable": "^3.7.6",
-    "nib": "^1.1.0",
     "node-uuid": "^1.4.7",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -25,7 +24,6 @@
     "react-router": "^2.0.1",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
-    "sanitize.css": "^3.3.0",
     "slack": "^6.1.0",
     "source-map-support": "^0.4.0"
   },
@@ -37,6 +35,7 @@
     "electron-connect": "^0.3.7",
     "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.36.10",
+    "envify": "^3.4.0",
     "espower-loader": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -55,11 +54,14 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "mocha": "^2.4.5",
+    "nib": "^1.1.0",
     "power-assert": "^1.3.1",
+    "purecss": "^0.6.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
+    "sanitize.css": "^3.3.0",
     "typescript": "^1.9.0-dev.20160311",
     "typings": "^0.7.1",
-    "uglifyify": "^3.0.1"
+    "uglify": "^0.1.5"
   }
 }
