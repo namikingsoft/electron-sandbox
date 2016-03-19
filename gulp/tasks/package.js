@@ -47,14 +47,14 @@ gulp.task('package:pre:finishing', done => {
 gulp.task('package:pre:browserify:app', $.shell.task(`
   cp ${config.browserify.app.entry} ${config.browserify.app.tmpfile}
   browserify ${config.browserify.app.tmpfile} \
-    -g envify --im --no-detect-globals --node \
+    -t envify --im --no-detect-globals --node \
   |  uglifyjs -c warnings=false -d DEBUG=false \
   > ${config.browserify.app.output}
 `))
 gulp.task('package:pre:browserify:front', $.shell.task(`
   cp ${config.browserify.front.entry} ${config.browserify.front.tmpfile}
   browserify ${config.browserify.front.tmpfile} \
-    -g envify --im --no-detect-globals --node \
+    -t envify --im --no-detect-globals --node \
   |  uglifyjs -c warnings=false -d DEBUG=false \
   > ${config.browserify.front.output}
 `))
