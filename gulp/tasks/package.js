@@ -3,10 +3,12 @@ const $ = require('gulp-load-plugins')()
 const del = require('del')
 const packager = require('electron-packager')
 const browserify = require('browserify')
+const runSequence = require('run-sequence')
 const config = require('../config')
 
+// build electron
 gulp.task('package', ['package:pre'], () => {
-  gulp.start(config.package.platforms.map(x => `package:electron:${x}`))
+  gulp.start('package:electron')
 })
 gulp.task('package:electron', () => {
   gulp.start(config.package.platforms.map(x => `package:electron:${x}`))
@@ -30,14 +32,32 @@ config.package.platforms.forEach(platform => {
   })
 })
 
-gulp.task('package:pre', ['package:pre:finishing'], done => done())
-gulp.task('package:pre:finishing', ['package:pre:browserify'], done => {
+// pre build
+gulp.task('package:pre', done => runSequence(
+  'clean:dist',
+  'package:pre:build',
+  'package:pre:browserify:app',
+  'package:pre:browserify:front',
+  'package:pre:finishing',
+  done
+))
+gulp.task('package:pre:finishing', done => {
   del(config.browserify.removes).then(pathes => done())
 })
-gulp.task('package:pre:browserify', ['package:pre:build'], $.shell.task([
-  `cp ${config.browserify.entry} ${config.browserify.tmpfile}`,
-  `browserify ${config.browserify.tmpfile} -o ${config.browserify.output} -g uglifyify --im --no-detect-globals --node`,
-]))
+gulp.task('package:pre:browserify:app', $.shell.task(`
+  cp ${config.browserify.app.entry} ${config.browserify.app.tmpfile}
+  browserify ${config.browserify.app.tmpfile} \
+    -g envify --im --no-detect-globals --node \
+  |  uglifyjs -c warnings=false -d DEBUG=false \
+  > ${config.browserify.app.output}
+`))
+gulp.task('package:pre:browserify:front', $.shell.task(`
+  cp ${config.browserify.front.entry} ${config.browserify.front.tmpfile}
+  browserify ${config.browserify.front.tmpfile} \
+    -g envify --im --no-detect-globals --node \
+  |  uglifyjs -c warnings=false -d DEBUG=false \
+  > ${config.browserify.front.output}
+`))
 gulp.task('package:pre:build', [
   'script',
   'style',

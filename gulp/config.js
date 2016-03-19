@@ -35,10 +35,18 @@ const watch = {
 }
 
 const browserify = {
-  entry: `${dir.dist}/front.js`,
-  output: `${dir.dist}/front.js`,
-  tmpfile: `${dir.dist}/front.src.js`,
+  app: {
+    entry: `${dir.dist}/app.js`,
+    output: `${dir.dist}/app.js`,
+    tmpfile: `${dir.dist}/app.src.js`,
+  },
+  front: {
+    entry: `${dir.dist}/front.js`,
+    output: `${dir.dist}/front.js`,
+    tmpfile: `${dir.dist}/front.src.js`,
+  },
   removes: [
+    `${dir.dist}/app.src.js`,
     `${dir.dist}/front.src.js`,
   ],
 }
