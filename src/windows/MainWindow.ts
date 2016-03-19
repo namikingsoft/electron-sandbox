@@ -34,9 +34,9 @@ export default class MainWindow {
     thisAny.setIgnoreMouseEvents(true)
 
     // enable devtools on development
-    //if (process.env.NODE_ENV === 'develop') {
+    if (process.env.NODE_ENV === 'develop') {
       this.window.webContents.openDevTools()
-    //}
+    }
   }
 
   close() {
