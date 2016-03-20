@@ -24,6 +24,7 @@ export default class MainWindow {
       frame: false,
       resizable: false,
       alwaysOnTop: true,
+      show: false,
     })
     this.window.setVisibleOnAllWorkspaces(true)
     this.window.on('closed', () => app.quit())
@@ -39,8 +40,8 @@ export default class MainWindow {
     }
   }
 
-  close() {
-    this.window.close()
+  show() {
+    this.window.show()
   }
 
   reload() {

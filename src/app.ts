@@ -14,14 +14,13 @@ if (process.env.NODE_ENV === 'develop') {
 }
 
 app.on('ready', () => {
-  // windows
-  const mainWindow = MainWindow.getInstance()
-  const settingWindow = SettingWindow.getInstance()
+  // window
+  MainWindow.getInstance().show()
 
   // tray
   const tray = new Tray(`${__dirname}/images/icon.png`)
   const menu = Menu.buildFromTemplate([
-    {label: "Setting", click: () => settingWindow.show()},
+    {label: "Setting", click: () => SettingWindow.getInstance().show()},
     {label: "Quit", click: () => app.quit()},
   ])
   tray.setToolTip(app.getName())
