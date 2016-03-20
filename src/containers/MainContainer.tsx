@@ -10,16 +10,31 @@ interface Props {
   postAction?: {
     connectSlack: (token: string)=>void,
   }
+  route?: {
+    path: string,
+  }
+  children?: Array<Component<any,any>>
 }
 
-class IndexContainer extends Component<Props, any> {
+class MainContainer extends Component<Props, any> {
   render() {
-    return <div />
+    return (
+      <div className="MainContainer">
+        {this.props.children}
+      </div>
+    )
   }
 
   componentDidMount() {
-    const {setting} = this.props
-    location.hash = `/${setting.notifyType}`
+    const {route, setting} = this.props
+    if (route.path === '/') {
+      // redirect @todo use react-router?
+      location.hash = `/${setting.notifyType}`
+    }
+    const {connectSlack} = this.props.postAction
+    if (connectSlack) {
+      connectSlack(setting.slackToken)
+    }
   }
 }
 
@@ -30,4 +45,4 @@ export default connect(
   dispatch => new Object({
     postAction: bindActionCreators(PostAction, dispatch),
   })
-)(IndexContainer)
+)(MainContainer)
