@@ -1,6 +1,5 @@
 .TypingNotify
   display block
-  margin-bottom 1em
   width 100%
   color #fff
   text-shadow 1px 1px 1px #000,
@@ -33,4 +32,12 @@
         content '#'
 
   &__message
-    font-size 0.8em
+    font-size 0.9em
+    line-height 1.8
+    margin-bottom 1em
+    &:after
+      content ' '
+    &.typing:after
+      content '_'
+      color #0f0
+      margin-left 0.5em
