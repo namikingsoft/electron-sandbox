@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Component, PropTypes} from 'react'
 import Letter from '../domains/Letter'
+import {TYPING_DELTA_MSEC} from '../app.const'
 
 interface Props {
   letter: Letter
@@ -9,17 +10,36 @@ interface Props {
 }
 
 interface State {
+  source?: string,
+  count?: number,
+  style?: {
+    transition?: string,
+    transform?: string,
+    maxHeight?: number,
+  }
 }
 
 export default class TypingNotify extends Component<Props, State> {
-  constructor() {
-    super()
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      source: props.letter.message.toDisplay(),
+      count: 0,
+      style: {
+        transition: 'all 500ms ease-out',
+        transform: 'translateX(110%)',
+        maxHeight: 500,
+      },
+    }
   }
 
   render() {
     const {letter} = this.props
+    const {source, count, style} = this.state
+    // @todo 5 is magic number of anti-afterimage
+    const typingClass = count < source.length-5 ? 'typing' : ''
     return (
-      <div className="TypingNotify">
+      <div className="TypingNotify" style={style}>
         <div className="TypingNotify__meta">
           <div className="TypingNotify__meta__image">
             <img src={letter.user.image} />
@@ -31,23 +51,69 @@ export default class TypingNotify extends Component<Props, State> {
             {letter.channel.name}
           </div>
         </div>
-        <div className="TypingNotify__message">
-          {letter.message.toDisplay()}
+        <div className={`TypingNotify__message ${typingClass}`}>
+          {source.slice(0, count)}
         </div>
       </div>
     )
   }
 
   componentDidMount() {
-    const {onMount} = this.props
-    if (onMount) {
+    if (this.props.onMount) {
       this.props.onMount()
     }
+    this.typing()
+    this.animate()
   }
 
   componentWillUnmount() {
   }
 
   componentDidUpdate(prevProps: Props = null) {
+  }
+
+  private typing() {
+    const {source, count} = this.state
+    this.setState({
+      count: count + 1,
+    })
+    if (count + 1 < source.length) {
+      setTimeout(() => this.typing(), TYPING_DELTA_MSEC)
+    }
+  }
+
+  private animate() {
+    new Promise((resolve, reject) => setTimeout(resolve, 0))
+    .then(() => new Promise((resolve, reject) => {
+      this.setState({
+        style: {
+          transition: 'all 500ms ease-out',
+          transform: 'translateX(0)',
+          maxHeight: 500,
+        },
+      })
+      setTimeout(resolve, 9000)
+    }))
+    .then(() => new Promise((resolve, reject) => {
+      this.setState({
+        style: {
+          transition: 'all 500ms ease-out',
+          transform: 'translateX(110%)',
+          maxHeight: 500,
+        },
+      })
+      console.log(this.state)
+      setTimeout(resolve, 500)
+    }))
+    .then(() => new Promise((resolve, reject) => {
+      this.setState({
+        style: {
+          transition: 'all 500ms ease-out',
+          transform: 'translateX(110%)',
+          maxHeight: 0,
+        },
+      })
+      resolve()
+    }))
   }
 }
