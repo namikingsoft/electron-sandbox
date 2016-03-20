@@ -2,10 +2,17 @@ import * as React from 'react'
 import {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import Post from '../domains/Post'
 import Setting from '../domains/Setting'
 import * as PostAction from '../actions/PostAction'
+import GlobalRepository from '../domains/GlobalRepository'
+import {
+  AUTO_RELOAD_MSEC,
+  AUTO_RELOAD_RECHECK_MSEC
+} from '../app.const'
 
 interface Props {
+  post?: Post
   setting?: Setting
   postAction?: {
     connectSlack: (token: string)=>void,
@@ -35,11 +42,27 @@ class MainContainer extends Component<Props, any> {
     if (connectSlack) {
       connectSlack(setting.slackToken)
     }
+    this.startAutoReload()
+  }
+
+  private startAutoReload() {
+    new Promise((resolve, reject) => setTimeout(resolve, AUTO_RELOAD_MSEC)).
+    then(() => {
+      const check = () => {
+        const {post} = this.props
+        if (post.letters.length === 0) {
+          GlobalRepository.mainWindow.reload()
+        }
+        setTimeout(check, AUTO_RELOAD_RECHECK_MSEC)
+      }
+      check()
+    })
   }
 }
 
 export default connect(
   state => new Object({
+    post: state.post,
     setting: state.setting,
   }),
   dispatch => new Object({
