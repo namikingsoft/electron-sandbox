@@ -52,8 +52,9 @@ class MainContainer extends Component<Props, any> {
         const {post} = this.props
         if (post.letters.length === 0) {
           GlobalRepository.mainWindow.reload()
+        } else {
+          setTimeout(check, AUTO_RELOAD_RECHECK_MSEC)
         }
-        setTimeout(check, AUTO_RELOAD_RECHECK_MSEC)
       }
       check()
     })
