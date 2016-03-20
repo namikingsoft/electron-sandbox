@@ -6,7 +6,7 @@ import {List} from 'immutable'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
-import TypingNotification from '../components/TypingNotification'
+import TypingNotify from '../components/TypingNotify'
 import * as PostAction from '../actions/PostAction'
 import {STREAM_TRANS_MSEC} from '../app.const'
 
@@ -29,7 +29,7 @@ class TypingContainer extends Component<Props, any> {
     const {removeLetter} = this.props.postAction
     return (
       <div className="TypingContainer">
-        {letters.map(x => <TypingNotification key={x.id} letter={x}
+        {letters.map(x => <TypingNotify key={x.id} letter={x}
           onMount={() => setTimeout(() => removeLetter(x), 5000)} />)}
       </div>
     )

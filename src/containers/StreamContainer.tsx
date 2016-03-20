@@ -6,7 +6,7 @@ import {List} from 'immutable'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
-import StreamNotification from '../components/StreamNotification'
+import StreamNotify from '../components/StreamNotify'
 import * as PostAction from '../actions/PostAction'
 import {STREAM_TRANS_MSEC} from '../app.const'
 
@@ -30,7 +30,7 @@ class StreamContainer extends Component<Props, any> {
     return (
       <div className="StreamContainer">
         {post.letters.map(x =>
-          <StreamNotification
+          <StreamNotify
             key={x.id} letter={x}
             onMount={() => setTimeout(() => removeLetter(x), STREAM_TRANS_MSEC)}
           />

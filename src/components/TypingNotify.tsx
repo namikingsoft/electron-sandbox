@@ -11,7 +11,7 @@ interface Props {
 interface State {
 }
 
-export default class TypingNotification extends Component<Props, State> {
+export default class TypingNotify extends Component<Props, State> {
   constructor() {
     super()
   }
@@ -19,19 +19,19 @@ export default class TypingNotification extends Component<Props, State> {
   render() {
     const {letter} = this.props
     return (
-      <div className="TypingNotification">
-        <div className="TypingNotification__meta">
-          <div className="TypingNotification__meta__image">
+      <div className="TypingNotify">
+        <div className="TypingNotify__meta">
+          <div className="TypingNotify__meta__image">
             <img src={letter.user.image} />
           </div>
-          <div className="TypingNotification__meta__user">
+          <div className="TypingNotify__meta__user">
             {letter.user.name}
           </div>
-          <div className="TypingNotification__meta__channel">
+          <div className="TypingNotify__meta__channel">
             {letter.channel.name}
           </div>
         </div>
-        <div className="TypingNotification__message">
+        <div className="TypingNotify__message">
           {letter.message.toDisplay()}
         </div>
       </div>
