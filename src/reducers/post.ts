@@ -1,4 +1,3 @@
-import {Seq} from 'immutable'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
 import {
@@ -8,7 +7,7 @@ import {
 } from '../actions/PostAction'
 
 const initialState: Post = new Post({
-  letters: Seq.of<Letter>(),
+  letters: [],
 })
 
 export default function post(
@@ -18,12 +17,11 @@ export default function post(
   switch (action.type) {
   case ADD_LETTER:
     return new Post({
-      letters: state.letters.concat(action.letter).toIndexedSeq(),
+      letters: state.letters.concat(action.letter),
     })
   case REMOVE_LETTER:
     return new Post({
-      letters:
-        state.letters.filter(x => x !== action.letter).toIndexedSeq(),
+      letters: state.letters.filter(x => x !== action.letter),
     })
   }
   return state

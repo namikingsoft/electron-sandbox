@@ -2,13 +2,12 @@ import * as React from 'react'
 import {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {List} from 'immutable'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
 import TypingNotify from '../components/TypingNotify'
 import * as PostAction from '../actions/PostAction'
-import {STREAM_TRANS_MSEC} from '../app.const'
+import {TYPING_TRANS_MSEC} from '../app.const'
 
 interface Props {
   post?: Post
@@ -30,7 +29,7 @@ class TypingContainer extends Component<Props, any> {
     return (
       <div className="TypingContainer">
         {letters.map(x => <TypingNotify key={x.id} letter={x}
-          onMount={() => setTimeout(() => removeLetter(x), 5000)} />)}
+          onMount={() => setTimeout(() => removeLetter(x), TYPING_TRANS_MSEC)} />)}
       </div>
     )
   }
