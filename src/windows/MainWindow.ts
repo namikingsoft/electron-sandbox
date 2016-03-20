@@ -45,6 +45,7 @@ export default class MainWindow {
 
   reload() {
     this.window.reload()
+    this.window.loadURL(BASE_URL)
   }
 
   // singleton

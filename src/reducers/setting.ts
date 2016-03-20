@@ -10,6 +10,7 @@ import {remote} from 'electron'
 
 const initialState: Setting = new Setting({
   slackToken: localStorage['slackToken'] || '',
+  notifyType: localStorage['notifyType'] || 'stream',
 })
 
 export default function setting(
@@ -24,6 +25,7 @@ export default function setting(
     break
   case SAVE_SETTING:
     localStorage['slackToken'] = state.slackToken
+    localStorage['notifyType'] = state.notifyType
     GlobalRepository.mainWindow.reload()
     GlobalRepository.settingWindow.hide()
     break

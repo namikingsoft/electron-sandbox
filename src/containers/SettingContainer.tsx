@@ -24,7 +24,11 @@ class SettingContainer extends Component<Props, any> {
         <TextField
           label="Slack Token"
           value={setting.slackToken}
-          onChange={text => this.changeSlackToken(text)} />
+          onChange={slackToken => this.changeValue({slackToken})} />
+        <TextField
+          label="Notify Type"
+          value={setting.notifyType}
+          onChange={notifyType => this.changeValue({notifyType})} />
         <div className="Button pure-controls">
           <Button onClick={action.saveSetting} mode="primary">Save</Button>
           <Button onClick={action.cancelSetting}>Cancel</Button>
@@ -33,10 +37,12 @@ class SettingContainer extends Component<Props, any> {
     )
   }
 
-  changeSlackToken(text: string) {
+  changeValue(obj: any) {
+    const {setting} = this.props
     this.props.action.updateSetting(
       new Setting({
-        slackToken: text,
+        slackToken: obj.slackToken || setting.slackToken,
+        notifyType: obj.notifyType || setting.notifyType,
       })
     )
   }
