@@ -28,16 +28,20 @@ export default class StreamNotification extends Component<Props, State> {
     const style: any = this.state
     style['transition'] = `left ${STREAM_TRANS_MSEC}ms linear`
     return (
-      <div className="Message" style={style}>
-        <div className="Message__image">
+      <div className="StreamNotification" style={style}>
+        <div className="StreamNotification__image">
           <img src={letter.user.image} />
         </div>
-        <div className="Message__main">
-          <div className="Message__main__meta">
-            <span className="Message__main__meta__user">{letter.user.name}</span>
-            <span className="Message__main__meta__channel">{letter.channel.name}</span>
+        <div className="StreamNotification__main">
+          <div className="StreamNotification__main__meta">
+            <span className="StreamNotification__main__meta__user">
+              {letter.user.name}
+            </span>
+            <span className="StreamNotification__main__meta__channel">
+              {letter.channel.name}
+            </span>
           </div>
-          <div className="Message__main__label" ref="label">
+          <div className="StreamNotification__main__label" ref="label">
             {letter.message.toDisplay()}
           </div>
         </div>

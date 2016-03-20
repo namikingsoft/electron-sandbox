@@ -17,6 +17,7 @@ export function connectSlack(token: string): Dispatcher {
 }
 
 export function addLetter(letter: Letter): PostAction {
+  console.log(letter)
   return {type: ADD_LETTER, letter}
 }
 

@@ -1,0 +1,36 @@
+.TypingNotification
+  display block
+  margin-bottom 1em
+  width 100%
+  color #fff
+  text-shadow 1px 1px 1px #000,
+    -1px 1px 1px #000,
+    1px -1px 1px #000,
+    -1px -1px 1px #000
+
+  &__meta
+    overflow hidden
+    margin-bottom 0.5em
+
+    &__image
+      display inline-block
+      float left
+      margin-right 15px
+      img
+        width 45px
+        height 45px
+        border-radius 45px
+        box-shadow 1px 1px 0px rgba(0,0,0,0.2),
+          -1px 1px 0px rgba(0,0,0,0.2),
+          1px -1px 0px rgba(0,0,0,0.2),
+          -1px -1px 0px rgba(0,0,0,0.2)
+    &__user
+      &:before
+        content '@'
+    &__channel
+      &:before
+        color #3f3
+        content '#'
+
+  &__message
+    font-size 0.8em

@@ -6,6 +6,7 @@ import {createStore, applyMiddleware} from 'redux'
 import {Router, Route, hashHistory} from 'react-router'
 import IndexContainer from './containers/IndexContainer'
 import StreamContainer from './containers/StreamContainer'
+import TypingContainer from './containers/TypingContainer'
 import SettingContainer from './containers/SettingContainer'
 import reducers from './reducers'
 
@@ -17,8 +18,8 @@ render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router history={hashHistory}>
       <Route path="/" component={IndexContainer} />
-      <Route path="/refresh" component={IndexContainer} />
       <Route path="/stream" component={StreamContainer} />
+      <Route path="/typing" component={TypingContainer} />
       <Route path="/setting" component={SettingContainer} />
       <Route path="*" component={IndexContainer} />
     </Router>

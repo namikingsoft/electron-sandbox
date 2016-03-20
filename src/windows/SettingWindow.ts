@@ -18,7 +18,7 @@ export default class SettingWindow {
     const screenSize = screen.getPrimaryDisplay().size
     this.window = new BrowserWindow({
       width: 600,
-      height: 180,
+      height: 200,
       center: true,
       frame: false,
       resizable: false,

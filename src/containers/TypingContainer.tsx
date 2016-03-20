@@ -6,7 +6,7 @@ import {List} from 'immutable'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
 import Setting from '../domains/Setting'
-import StreamNotification from '../components/StreamNotification'
+import TypingNotification from '../components/TypingNotification'
 import * as PostAction from '../actions/PostAction'
 import {STREAM_TRANS_MSEC} from '../app.const'
 
@@ -19,22 +19,18 @@ interface Props {
   }
 }
 
-class StreamContainer extends Component<Props, any> {
+class TypingContainer extends Component<Props, any> {
   constructor() {
     super()
   }
 
   render() {
-    const {post} = this.props
+    const {letters} = this.props.post
     const {removeLetter} = this.props.postAction
     return (
-      <div className="StreamContainer">
-        {post.letters.map(x =>
-          <StreamNotification
-            key={x.id} letter={x}
-            onMount={() => setTimeout(() => removeLetter(x), STREAM_TRANS_MSEC)}
-          />
-        )}
+      <div className="TypingContainer">
+        {letters.map(x => <TypingNotification key={x.id} letter={x}
+          onMount={() => setTimeout(() => removeLetter(x), 5000)} />)}
       </div>
     )
   }
@@ -56,4 +52,4 @@ export default connect(
   dispatch => new Object({
     postAction: bindActionCreators(PostAction, dispatch),
   })
-)(StreamContainer)
+)(TypingContainer)
