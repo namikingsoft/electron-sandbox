@@ -21,13 +21,13 @@ export default function setting(
   case UPDATE_SETTING:
     return action.setting
   case CANCEL_SETTING:
-    GlobalRepository.settingWindow.hide()
+    GlobalRepository.settingWindow.close()
     break
   case SAVE_SETTING:
     localStorage['slackToken'] = state.slackToken
     localStorage['notifyType'] = state.notifyType
     GlobalRepository.mainWindow.reload()
-    GlobalRepository.settingWindow.hide()
+    GlobalRepository.settingWindow.close()
     break
   }
   return state

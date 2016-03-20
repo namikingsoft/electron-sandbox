@@ -27,7 +27,6 @@ export default class SettingWindow {
       show: false,
     })
     this.window.setVisibleOnAllWorkspaces(true)
-    this.window.on('closed', () => app.quit())
     this.window.loadURL(`${BASE_URL}#setting`)
   }
 
@@ -35,9 +34,10 @@ export default class SettingWindow {
     this.window.show()
   }
 
-  hide() {
-    this.window.hide()
-    this.window.reload()
+  close() {
+    SettingWindow.instance = undefined
+    GlobalRepository.settingWindow = undefined
+    this.window.close()
   }
 
   // singleton
