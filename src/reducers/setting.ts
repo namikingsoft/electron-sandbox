@@ -10,7 +10,7 @@ import {remote} from 'electron'
 
 const initialState: Setting = new Setting({
   slackToken: localStorage['slackToken'] || '',
-  notifyType: localStorage['notifyType'] || 'stream',
+  notifyType: localStorage['notifyType'] || 'typing',
 })
 
 export default function setting(

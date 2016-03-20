@@ -3,10 +3,10 @@ import * as React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
-import {Router, Route, hashHistory} from 'react-router'
-import IndexContainer from './containers/IndexContainer'
-import StreamContainer from './containers/StreamContainer'
+import {Router, Route, Redirect, hashHistory} from 'react-router'
+import MainContainer from './containers/MainContainer'
 import TypingContainer from './containers/TypingContainer'
+import StreamContainer from './containers/StreamContainer'
 import SettingContainer from './containers/SettingContainer'
 import reducers from './reducers'
 
@@ -17,11 +17,12 @@ const createStoreWithMiddleware = applyMiddleware(
 render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router history={hashHistory}>
-      <Route path="/" component={IndexContainer} />
-      <Route path="/stream" component={StreamContainer} />
-      <Route path="/typing" component={TypingContainer} />
+      <Route path="/" component={MainContainer}>
+        <Route path="/typing" component={TypingContainer} />
+        <Route path="/stream" component={StreamContainer} />
+      </Route>
       <Route path="/setting" component={SettingContainer} />
-      <Route path="*" component={IndexContainer} />
+      <Redirect from="*" to="/typing" />
     </Router>
   </Provider>,
   document.getElementById('app')
