@@ -5,6 +5,7 @@ export default class Setting {
   constructor(private param: {
     slackToken: string,
     notifyType: string,
+    removeMsec: number,
   }) {}
 
   get slackToken(): string {
@@ -13,5 +14,9 @@ export default class Setting {
 
   get notifyType(): string {
     return this.param.notifyType
+  }
+
+  get removeMsec(): number {
+    return this.param.removeMsec
   }
 }

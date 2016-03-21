@@ -2,10 +2,10 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Component, PropTypes} from 'react'
 import Letter from '../domains/Letter'
-import {STREAM_TRANS_MSEC} from '../app.const'
 
 interface Props {
   letter: Letter
+  removeMsec: number
   onMount?: ()=>void
 }
 
@@ -24,9 +24,9 @@ export default class StreamNotify extends Component<Props, State> {
   }
 
   render() {
-    const {letter} = this.props
+    const {letter, removeMsec} = this.props
     const style: any = this.state
-    style['transition'] = `left ${STREAM_TRANS_MSEC}ms linear`
+    style['transition'] = `left ${removeMsec}ms linear`
     return (
       <div className="StreamNotify" style={style}>
         <div className="StreamNotify__image">

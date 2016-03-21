@@ -42,10 +42,10 @@ class MainContainer extends Component<Props, any> {
     if (connectSlack) {
       connectSlack(setting.slackToken)
     }
-    this.startAutoReload()
+    this.setTimeoutAutoReload()
   }
 
-  private startAutoReload() {
+  private setTimeoutAutoReload() {
     new Promise((resolve, reject) => setTimeout(resolve, AUTO_RELOAD_MSEC)).
     then(() => {
       const check = () => {
