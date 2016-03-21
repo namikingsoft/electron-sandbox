@@ -11,11 +11,13 @@ export default class Button extends Component<Props, any> {
   render() {
     const mode = this.props.mode || 'default'
     return (
-      <button
-        className={`Button pure-button pure-button-${mode}`}
-        onClick={e => this.handleClick(e)}>
-        {this.props.children}
-      </button>
+      <span className="Button">
+        <button
+          className={`pure-button pure-button-${mode}`}
+          onClick={e => this.handleClick(e)}>
+          {this.props.children}
+        </button>
+      </span>
     )
   }
 

@@ -4,31 +4,30 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Post from '../domains/Post'
 import Letter from '../domains/Letter'
+import Setting from '../domains/Setting'
 import StreamNotify from '../components/StreamNotify'
 import * as PostAction from '../actions/PostAction'
-import {STREAM_TRANS_MSEC} from '../app.const'
 
 interface Props {
   post?: Post
+  setting?: Setting
   postAction?: {
     removeLetter: (letter: Letter)=>void,
   }
 }
 
 class StreamContainer extends Component<Props, any> {
-  constructor() {
-    super()
-  }
-
   render() {
-    const {post} = this.props
+    const {letters} = this.props.post
+    const {removeMsec} = this.props.setting
     const {removeLetter} = this.props.postAction
     return (
       <div className="StreamContainer">
-        {post.letters.map(x =>
+        {letters.map(x =>
           <StreamNotify
             key={x.id} letter={x}
-            onMount={() => setTimeout(() => removeLetter(x), STREAM_TRANS_MSEC)}
+            removeMsec={removeMsec}
+            onMount={() => setTimeout(() => removeLetter(x), removeMsec)}
           />
         )}
       </div>
@@ -39,6 +38,7 @@ class StreamContainer extends Component<Props, any> {
 export default connect(
   state => new Object({
     post: state.post,
+    setting: state.setting,
   }),
   dispatch => new Object({
     postAction: bindActionCreators(PostAction, dispatch),

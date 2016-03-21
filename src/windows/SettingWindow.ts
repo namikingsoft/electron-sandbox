@@ -18,7 +18,7 @@ export default class SettingWindow {
     const screenSize = screen.getPrimaryDisplay().size
     this.window = new BrowserWindow({
       width: 600,
-      height: 200,
+      height: 240,
       center: true,
       frame: false,
       resizable: false,
@@ -28,6 +28,11 @@ export default class SettingWindow {
     })
     this.window.setVisibleOnAllWorkspaces(true)
     this.window.loadURL(`${BASE_URL}#setting`)
+
+    // enable devtools on development
+    if (process.env.NODE_ENV === 'develop') {
+      this.window.webContents.openDevTools()
+    }
   }
 
   show() {

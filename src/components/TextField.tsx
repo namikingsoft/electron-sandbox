@@ -2,8 +2,8 @@ import * as React from 'react'
 import {Component, PropTypes} from 'react'
 
 interface Props {
-  label: string
   value: string
+  placeholder: string
   onChange?: (text: string)=>void
 }
 
@@ -20,16 +20,15 @@ export default class TextField extends Component<Props, State> {
   }
 
   render() {
-    const {label} = this.props
+    const {placeholder} = this.props
     const {text} = this.state
     return (
-      <div className="TextField pure-control-group">
-        <label>{label}</label>
+      <span className="TextField">
         <input type="text"
-          placeholder={label}
           value={text}
+          placeholder={placeholder}
           onChange={e => this.handleChange(e)} />
-      </div>
+      </span>
     )
   }
 

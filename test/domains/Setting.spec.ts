@@ -9,6 +9,7 @@ describe('Setting', function() {
     setting = new Setting({
       slackToken: 'SlackToken',
       notifyType: 'NotifyType',
+      removeMsec: 1234,
     })
   })
 
@@ -24,9 +25,15 @@ describe('Setting', function() {
     })
   })
 
-  describe('name', () => {
+  describe('notifyType', () => {
     it('should be return initial value', () => {
       assert(setting.notifyType === 'NotifyType')
+    })
+  })
+
+  describe('removeMsec', () => {
+    it('should be return initial value', () => {
+      assert(setting.removeMsec === 1234)
     })
   })
 })
