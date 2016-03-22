@@ -104,7 +104,6 @@ export default class TypingNotify extends Component<Props, State> {
           maxHeight: 500,
         },
       })
-      console.log(this.state)
       setTimeout(resolve, 500)
     }))
     .then(() => new Promise((resolve, reject) => {
