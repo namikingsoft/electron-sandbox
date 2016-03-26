@@ -59,6 +59,7 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
     "sanitize.css": "^3.3.0",
+    "tslint": "^3.6.0",
     "typescript": "^1.9.0-dev.20160311",
     "typings": "^0.7.1",
     "uglify": "^0.1.5"
