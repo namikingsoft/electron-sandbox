@@ -1,7 +1,5 @@
 /// <reference path="../reference.d.ts" />
 import {
-  app,
-  screen,
   BrowserWindow,
 } from "electron"
 import {
@@ -16,7 +14,6 @@ export default class SettingWindow {
   private window: Window
 
   private constructor() {
-    const screenSize = screen.getPrimaryDisplay().size
     this.window = new BrowserWindow({
       width: 600,
       height: 240,

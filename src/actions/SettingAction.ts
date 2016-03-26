@@ -1,5 +1,5 @@
 /// <reference path="../reference.d.ts" />
-import Action, {Dispatcher, Dispatch} from "./Action"
+import Action from "./Action"
 import Setting from "../domains/Setting"
 
 export interface SettingAction extends Action {

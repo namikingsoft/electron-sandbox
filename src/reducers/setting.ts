@@ -11,7 +11,6 @@ import {
 } from "../app.const"
 import Setting from "../domains/Setting"
 import GlobalRepository from "../domains/GlobalRepository"
-import {remote} from "electron"
 
 const initialState: Setting = new Setting({
   slackToken: localStorage["slackToken"] || "",

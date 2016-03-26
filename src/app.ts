@@ -3,7 +3,6 @@ import {
   app,
   Menu,
   Tray,
-  screen,
 } from "electron"
 import MainWindow from "./windows/MainWindow"
 import SettingWindow from "./windows/SettingWindow"
