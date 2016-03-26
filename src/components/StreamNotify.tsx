@@ -1,7 +1,7 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import {Component, PropTypes} from 'react'
-import Letter from '../domains/Letter'
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import {Component, PropTypes} from "react"
+import Letter from "../domains/Letter"
 
 interface Props {
   letter: Letter
@@ -26,7 +26,7 @@ export default class StreamNotify extends Component<Props, State> {
   render() {
     const {letter, removeMsec} = this.props
     const style: any = this.state
-    style['transition'] = `left ${removeMsec}ms linear`
+    style["transition"] = `left ${removeMsec}ms linear`
     return (
       <div className="StreamNotify" style={style}>
         <div className="StreamNotify__image">
@@ -52,7 +52,7 @@ export default class StreamNotify extends Component<Props, State> {
   componentDidMount() {
     setTimeout(() => {
       // @todo any
-      const label: any = ReactDOM.findDOMNode(this.refs['label'])
+      const label: any = ReactDOM.findDOMNode(this.refs["label"])
       this.setState({
         top: this.state.top,
         left: -label.offsetWidth - 300, // @todo asobi

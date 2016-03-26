@@ -1,5 +1,5 @@
-import freeze from '../decorators/freeze'
-import {NO_IMAGE_URL} from '../app.const'
+import freeze from "../decorators/freeze"
+import {NO_IMAGE_URL} from "../app.const"
 
 @freeze
 export default class User {

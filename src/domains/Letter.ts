@@ -1,8 +1,8 @@
-import UniqueID from './UniqueID'
-import User from './User'
-import Channel from './Channel'
-import Message from './Message'
-import freeze from '../decorators/freeze'
+import UniqueID from "./UniqueID"
+import User from "./User"
+import Channel from "./Channel"
+import Message from "./Message"
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class Letter {

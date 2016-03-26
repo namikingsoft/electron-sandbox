@@ -1,5 +1,5 @@
-import * as React from 'react'
-import {Component, PropTypes} from 'react'
+import * as React from "react"
+import {Component, PropTypes} from "react"
 
 interface Props {
   value: string
@@ -15,7 +15,7 @@ export default class TextField extends Component<Props, State> {
   constructor(props: Props) {
     super()
     this.state = {
-      text: props.value || '',
+      text: props.value || "",
     }
   }
 

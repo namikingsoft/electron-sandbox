@@ -1,5 +1,5 @@
-import Letter from './Letter'
-import freeze from '../decorators/freeze'
+import Letter from "./Letter"
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class Post {

@@ -1,7 +1,7 @@
-import * as Promise from 'bluebird'
-import Action, {Dispatcher, Dispatch} from './Action'
-import LetterDelivery from '../domains/LetterDelivery'
-import Letter from '../domains/Letter'
+import * as Promise from "bluebird"
+import Action, {Dispatcher, Dispatch} from "./Action"
+import LetterDelivery from "../domains/LetterDelivery"
+import Letter from "../domains/Letter"
 
 export interface PostAction extends Action {
   type: string
@@ -24,5 +24,5 @@ export function removeLetter(letter: Letter): PostAction {
   return {type: REMOVE_LETTER, letter}
 }
 
-export const ADD_LETTER = 'ADD_LETTER'
-export const REMOVE_LETTER = 'REMOVE_LETTER'
+export const ADD_LETTER = "ADD_LETTER"
+export const REMOVE_LETTER = "REMOVE_LETTER"

@@ -1,4 +1,4 @@
-import freeze from '../decorators/freeze'
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class SingleValue<T> {
@@ -7,14 +7,14 @@ export default class SingleValue<T> {
   ) {}
 
   valueOf(): T {
-    return this.value;
+    return this.value
   }
 
   toString(): string {
-    return String(this.value);
+    return String(this.value)
   }
 
   equals(target: SingleValue<T>): boolean {
-    return this.value == target.valueOf();
+    return this.value === target.valueOf()
   }
 }

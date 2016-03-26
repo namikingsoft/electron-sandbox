@@ -1,4 +1,4 @@
-import freeze from '../decorators/freeze'
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class Setting {

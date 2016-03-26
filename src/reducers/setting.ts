@@ -3,19 +3,19 @@ import {
   UPDATE_SETTING,
   CANCEL_SETTING,
   SAVE_SETTING,
-} from '../actions/SettingAction'
+} from "../actions/SettingAction"
 import {
   DEFAULT_REMOVE_MSEC,
   DEFAULT_NOTIFY_TYPE,
-} from '../app.const'
-import Setting from '../domains/Setting'
-import GlobalRepository from '../domains/GlobalRepository'
-import {remote} from 'electron'
+} from "../app.const"
+import Setting from "../domains/Setting"
+import GlobalRepository from "../domains/GlobalRepository"
+import {remote} from "electron"
 
 const initialState: Setting = new Setting({
-  slackToken: localStorage['slackToken'] || '',
-  notifyType: localStorage['notifyType'] || DEFAULT_NOTIFY_TYPE,
-  removeMsec: localStorage['removeMsec'] || DEFAULT_REMOVE_MSEC,
+  slackToken: localStorage["slackToken"] || "",
+  notifyType: localStorage["notifyType"] || DEFAULT_NOTIFY_TYPE,
+  removeMsec: localStorage["removeMsec"] || DEFAULT_REMOVE_MSEC,
 })
 
 export default function setting(
@@ -29,9 +29,9 @@ export default function setting(
     GlobalRepository.settingWindow.close()
     break
   case SAVE_SETTING:
-    localStorage['slackToken'] = state.slackToken
-    localStorage['notifyType'] = state.notifyType
-    localStorage['removeMsec'] = state.removeMsec
+    localStorage["slackToken"] = state.slackToken
+    localStorage["notifyType"] = state.notifyType
+    localStorage["removeMsec"] = state.removeMsec
     GlobalRepository.mainWindow.reload()
     GlobalRepository.settingWindow.close()
     break

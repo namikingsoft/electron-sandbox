@@ -1,5 +1,5 @@
-import * as React from 'react'
-import {Component, PropTypes, FormEvent} from 'react'
+import * as React from "react"
+import {Component, PropTypes, FormEvent} from "react"
 
 interface Props {
   children?: Array<Component<any,any>>
@@ -9,7 +9,7 @@ interface Props {
 
 export default class Button extends Component<Props, any> {
   render() {
-    const mode = this.props.mode || 'default'
+    const mode = this.props.mode || "default"
     return (
       <span className="Button">
         <button
