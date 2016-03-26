@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import * as Promise from "bluebird"
 import {
   UserObject,

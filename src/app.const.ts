@@ -1,3 +1,4 @@
+/// <reference path="./reference.d.ts" />
 export const BASE_URL = `file://${__dirname}/index.html`
 export const DEFAULT_REMOVE_MSEC = 15000
 export const DEFAULT_NOTIFY_TYPE = "typing"

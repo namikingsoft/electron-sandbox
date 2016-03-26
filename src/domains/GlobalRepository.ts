@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import {remote} from "electron"
 import MainWindow from "../windows/MainWindow"
 import SettingWindow from "../windows/SettingWindow"

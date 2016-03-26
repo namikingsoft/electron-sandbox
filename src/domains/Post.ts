@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import Letter from "./Letter"
 import freeze from "../decorators/freeze"
 

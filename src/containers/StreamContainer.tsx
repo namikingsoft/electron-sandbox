@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import * as React from "react"
 import {Component, PropTypes} from "react"
 import {bindActionCreators} from "redux"

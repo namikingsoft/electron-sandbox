@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import * as uuid from "node-uuid"
 import SingleValue from "../domains/SingleValue"
 import freeze from "../decorators/freeze"

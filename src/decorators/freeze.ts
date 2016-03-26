@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import renameFunction from "../utils/renameFunction"
 
 export default function freeze<T extends Function>(Target: T): T {

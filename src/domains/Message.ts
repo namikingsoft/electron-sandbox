@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import SingleValue from "./SingleValue"
 import freeze from "../decorators/freeze"
 

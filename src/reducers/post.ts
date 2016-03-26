@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import Post from "../domains/Post"
 import Letter from "../domains/Letter"
 import {

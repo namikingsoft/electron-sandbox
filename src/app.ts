@@ -1,4 +1,4 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="./reference.d.ts" />
 import {
   app,
   Menu,

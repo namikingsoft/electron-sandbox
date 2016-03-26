@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import Action, {Dispatcher, Dispatch} from "./Action"
 import Setting from "../domains/Setting"
 

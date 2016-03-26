@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import freeze from "../decorators/freeze"
 
 @freeze

@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 import UniqueID from "./UniqueID"
 import User from "./User"
 import Channel from "./Channel"
