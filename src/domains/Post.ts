@@ -1,5 +1,6 @@
-import Letter from './Letter'
-import freeze from '../decorators/freeze'
+/// <reference path="../reference.d.ts" />
+import Letter from "./Letter"
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class Post {

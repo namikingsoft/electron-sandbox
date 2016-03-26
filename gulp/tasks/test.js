@@ -12,7 +12,8 @@ gulp.task('test', () => {
   return runSequence(
     'clean:test',
     'script:test',
-    'test:shell:mocha'
+    'test:shell:mocha',
+    'test:shell:tslint'
   )
 })
 
@@ -38,4 +39,8 @@ gulp.task('test:shell:mocha:min', $.shell.task(`
   if ${checkFileExists}; then
     ${mochaCommand} --reporter min
   fi
+`))
+
+gulp.task('test:shell:tslint', $.shell.task(`
+  find src -name '*.ts' | xargs tslint
 `))

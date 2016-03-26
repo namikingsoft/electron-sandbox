@@ -1,19 +1,19 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="./reference.d.ts" />
 import {
   app,
   Menu,
   Tray,
   screen,
-} from 'electron'
-import MainWindow from './windows/MainWindow'
-import SettingWindow from './windows/SettingWindow'
+} from "electron"
+import MainWindow from "./windows/MainWindow"
+import SettingWindow from "./windows/SettingWindow"
 
-if (process.env.NODE_ENV === 'develop') {
+if (process.env.NODE_ENV === "develop") {
   // source map for node
-  require('source-map-support').install()
+  require("source-map-support").install()
 }
 
-app.on('ready', () => {
+app.on("ready", () => {
   // window
   MainWindow.getInstance().show()
 

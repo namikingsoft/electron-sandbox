@@ -1,8 +1,9 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import {Component, PropTypes} from 'react'
-import Letter from '../domains/Letter'
-import {TYPING_DELTA_MSEC} from '../app.const'
+/// <reference path="../reference.d.ts" />
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import {Component, PropTypes} from "react"
+import Letter from "../domains/Letter"
+import {TYPING_DELTA_MSEC} from "../app.const"
 
 interface Props {
   letter: Letter
@@ -27,8 +28,8 @@ export default class TypingNotify extends Component<Props, State> {
       source: props.letter.message.toDisplay(),
       count: 0,
       style: {
-        transition: 'all 500ms ease-out',
-        transform: 'translateX(110%)',
+        transition: "all 500ms ease-out",
+        transform: "translateX(110%)",
         maxHeight: 500,
       },
     }
@@ -38,7 +39,7 @@ export default class TypingNotify extends Component<Props, State> {
     const {letter} = this.props
     const {source, count, style} = this.state
     // @todo 5 is magic number of anti-afterimage
-    const typingClass = count < source.length-5 ? 'typing' : ''
+    const typingClass = count < source.length-5 ? "typing" : ""
     return (
       <div className="TypingNotify" style={style}>
         <div className="TypingNotify__meta">
@@ -89,8 +90,8 @@ export default class TypingNotify extends Component<Props, State> {
     .then(() => new Promise((resolve, reject) => {
       this.setState({
         style: {
-          transition: 'all 500ms ease-out',
-          transform: 'translateX(0)',
+          transition: "all 500ms ease-out",
+          transform: "translateX(0)",
           maxHeight: 500,
         },
       })
@@ -99,8 +100,8 @@ export default class TypingNotify extends Component<Props, State> {
     .then(() => new Promise((resolve, reject) => {
       this.setState({
         style: {
-          transition: 'all 500ms ease-out',
-          transform: 'translateX(110%)',
+          transition: "all 500ms ease-out",
+          transform: "translateX(110%)",
           maxHeight: 500,
         },
       })
@@ -109,8 +110,8 @@ export default class TypingNotify extends Component<Props, State> {
     .then(() => new Promise((resolve, reject) => {
       this.setState({
         style: {
-          transition: 'all 500ms ease-out',
-          transform: 'translateX(110%)',
+          transition: "all 500ms ease-out",
+          transform: "translateX(110%)",
           maxHeight: 0,
         },
       })

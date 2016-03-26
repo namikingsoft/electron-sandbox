@@ -1,12 +1,13 @@
-import * as React from 'react'
-import {Component, PropTypes} from 'react'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as SettingAction from '../actions/SettingAction'
-import Setting from '../domains/Setting'
-import TextField from '../components/TextField'
-import RadioSelect from '../components/RadioSelect'
-import Button from '../components/Button'
+/// <reference path="../reference.d.ts" />
+import * as React from "react"
+import {Component, PropTypes} from "react"
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import * as SettingAction from "../actions/SettingAction"
+import Setting from "../domains/Setting"
+import TextField from "../components/TextField"
+import RadioSelect from "../components/RadioSelect"
+import Button from "../components/Button"
 
 interface Props {
   setting?: Setting
@@ -44,8 +45,8 @@ class SettingContainer extends Component<Props, any> {
               value={setting.notifyType}
               onChange={notifyType => this.changeValue({notifyType})}
               data={[
-                {label: 'Typing', value: 'typing'},
-                {label: 'Stream', value: 'stream'},
+                {label: "Typing", value: "typing"},
+                {label: "Stream", value: "stream"},
               ]} />
           </div>
           <div className="Button pure-controls">

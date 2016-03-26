@@ -1,9 +1,10 @@
-import {remote} from 'electron'
-import MainWindow from '../windows/MainWindow'
-import SettingWindow from '../windows/SettingWindow'
+/// <reference path="../reference.d.ts" />
+import {remote} from "electron"
+import MainWindow from "../windows/MainWindow"
+import SettingWindow from "../windows/SettingWindow"
 
-const MAIN_WINDOW_KEY = '__MAIN_WINDOW'
-const SETTING_WINDOW_KEY = '__SETTING_WINDOW'
+const MAIN_WINDOW_KEY = "__MAIN_WINDOW"
+const SETTING_WINDOW_KEY = "__SETTING_WINDOW"
 
 export default class GlobalRepository {
 
@@ -31,7 +32,7 @@ export default class GlobalRepository {
 
   private static set(key: string, value: any): void {
     if (remote) {
-      throw new Error('use only main process')
+      throw new Error("use only main process")
     } else {
       const globalAny = <any>global
       globalAny[key] = value

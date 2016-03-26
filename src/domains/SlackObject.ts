@@ -1,3 +1,4 @@
+/// <reference path="../reference.d.ts" />
 export interface UserObject {
   id: string
   name: string

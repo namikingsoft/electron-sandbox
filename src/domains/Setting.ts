@@ -1,4 +1,5 @@
-import freeze from '../decorators/freeze'
+/// <reference path="../reference.d.ts" />
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class Setting {

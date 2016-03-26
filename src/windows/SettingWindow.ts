@@ -1,14 +1,15 @@
+/// <reference path="../reference.d.ts" />
 import {
   app,
   screen,
   BrowserWindow,
-} from 'electron'
+} from "electron"
 import {
   BASE_URL,
-} from '../app.const'
-import GlobalRepository from '../domains/GlobalRepository'
+} from "../app.const"
+import GlobalRepository from "../domains/GlobalRepository"
 
-// alias class @todo cannot define 'private window: BrowserWindow'
+// alias class @todo cannot define "private window: BrowserWindow"
 class Window extends BrowserWindow {}
 
 export default class SettingWindow {
@@ -30,7 +31,7 @@ export default class SettingWindow {
     this.window.loadURL(`${BASE_URL}#setting`)
 
     // enable devtools on development
-    if (process.env.NODE_ENV === 'develop') {
+    if (process.env.NODE_ENV === "develop") {
       this.window.webContents.openDevTools()
     }
   }

@@ -1,10 +1,11 @@
-import Post from '../domains/Post'
-import Letter from '../domains/Letter'
+/// <reference path="../reference.d.ts" />
+import Post from "../domains/Post"
+import Letter from "../domains/Letter"
 import {
   PostAction,
   ADD_LETTER,
   REMOVE_LETTER,
-} from '../actions/PostAction'
+} from "../actions/PostAction"
 
 const initialState: Post = new Post({
   letters: [],

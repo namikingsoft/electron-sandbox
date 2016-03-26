@@ -1,15 +1,16 @@
-import * as React from 'react'
-import {Component, PropTypes} from 'react'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import Post from '../domains/Post'
-import Setting from '../domains/Setting'
-import * as PostAction from '../actions/PostAction'
-import GlobalRepository from '../domains/GlobalRepository'
+/// <reference path="../reference.d.ts" />
+import * as React from "react"
+import {Component, PropTypes} from "react"
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import Post from "../domains/Post"
+import Setting from "../domains/Setting"
+import * as PostAction from "../actions/PostAction"
+import GlobalRepository from "../domains/GlobalRepository"
 import {
   AUTO_RELOAD_MSEC,
   AUTO_RELOAD_RECHECK_MSEC
-} from '../app.const'
+} from "../app.const"
 
 interface Props {
   post?: Post
@@ -34,7 +35,7 @@ class MainContainer extends Component<Props, any> {
 
   componentDidMount() {
     const {route, setting} = this.props
-    if (route.path === '/') {
+    if (route.path === "/") {
       // redirect @todo use react-router?
       location.hash = `/${setting.notifyType}`
     }

@@ -1,5 +1,6 @@
-import freeze from '../decorators/freeze'
-import {NO_IMAGE_URL} from '../app.const'
+/// <reference path="../reference.d.ts" />
+import freeze from "../decorators/freeze"
+import {NO_IMAGE_URL} from "../app.const"
 
 @freeze
 export default class User {

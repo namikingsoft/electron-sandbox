@@ -1,8 +1,9 @@
-import UniqueID from './UniqueID'
-import User from './User'
-import Channel from './Channel'
-import Message from './Message'
-import freeze from '../decorators/freeze'
+/// <reference path="../reference.d.ts" />
+import UniqueID from "./UniqueID"
+import User from "./User"
+import Channel from "./Channel"
+import Message from "./Message"
+import freeze from "../decorators/freeze"
 
 @freeze
 export default class Letter {

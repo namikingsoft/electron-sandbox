@@ -1,12 +1,13 @@
-import * as React from 'react'
-import {Component, PropTypes} from 'react'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import Post from '../domains/Post'
-import Letter from '../domains/Letter'
-import Setting from '../domains/Setting'
-import StreamNotify from '../components/StreamNotify'
-import * as PostAction from '../actions/PostAction'
+/// <reference path="../reference.d.ts" />
+import * as React from "react"
+import {Component, PropTypes} from "react"
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+import Post from "../domains/Post"
+import Letter from "../domains/Letter"
+import Setting from "../domains/Setting"
+import StreamNotify from "../components/StreamNotify"
+import * as PostAction from "../actions/PostAction"
 
 interface Props {
   post?: Post

@@ -1,5 +1,6 @@
-import Action, {Dispatcher, Dispatch} from './Action'
-import Setting from '../domains/Setting'
+/// <reference path="../reference.d.ts" />
+import Action, {Dispatcher, Dispatch} from "./Action"
+import Setting from "../domains/Setting"
 
 export interface SettingAction extends Action {
   type: string
@@ -18,6 +19,6 @@ export function saveSetting(): SettingAction {
   return {type: SAVE_SETTING}
 }
 
-export const UPDATE_SETTING = 'UPDATE_SETTING'
-export const CANCEL_SETTING = 'CANCEL_SETTING'
-export const SAVE_SETTING = 'SAVE_SETTING'
+export const UPDATE_SETTING = "UPDATE_SETTING"
+export const CANCEL_SETTING = "CANCEL_SETTING"
+export const SAVE_SETTING = "SAVE_SETTING"

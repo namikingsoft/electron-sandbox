@@ -1,25 +1,26 @@
-import * as Promise from 'bluebird'
+/// <reference path="../reference.d.ts" />
+import * as Promise from "bluebird"
 import {
   UserObject,
   UserListObject,
   ChannelObject,
   ChannelListObject,
   MessageObject,
-} from '../domains/SlackObject'
-import Letter from '../domains/Letter'
-import User from '../domains/User'
-import Channel from '../domains/Channel'
-import Message from '../domains/Message'
-import freeze from '../decorators/freeze'
+} from "../domains/SlackObject"
+import Letter from "../domains/Letter"
+import User from "../domains/User"
+import Channel from "../domains/Channel"
+import Message from "../domains/Message"
+import freeze from "../decorators/freeze"
 
-const slack = require('slack')
+const slack = require("slack")
 Promise.promisifyAll(slack.auth)
 Promise.promisifyAll(slack.users)
 Promise.promisifyAll(slack.channels)
 
 interface MetaInfo {
-  user: {[index:string]: UserObject}
-  channel: {[index:string]: ChannelObject}
+  user: {[index: string]: UserObject}
+  channel: {[index: string]: ChannelObject}
 }
 
 @freeze
@@ -28,7 +29,7 @@ export default class LetterDelivery {
     private slackToken: string
   ) {}
 
-  onPost(callback: (letter:Letter)=>void): Promise<boolean> {
+  onPost(callback: (letter: Letter) => void): Promise<boolean> {
     return this.getMetaInfo()
     .then(meta => {
       const token = this.slackToken
