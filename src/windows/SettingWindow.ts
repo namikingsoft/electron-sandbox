@@ -27,6 +27,10 @@ export default class SettingWindow {
     this.window.setVisibleOnAllWorkspaces(true)
     this.window.loadURL(`${BASE_URL}#setting`)
 
+    // only darwin @todo tsd
+    const thisAny = <any>this.window
+    thisAny.setHasShadow(false)
+
     // enable devtools on development
     if (process.env.NODE_ENV === "develop") {
       this.window.webContents.openDevTools()
