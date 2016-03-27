@@ -42,5 +42,5 @@ gulp.task('test:shell:mocha:min', $.shell.task(`
 `))
 
 gulp.task('test:shell:tslint', $.shell.task(`
-  find src -name '*.ts*' | xargs tslint
+  find src | grep -e '\.tsx\?$' | xargs tslint
 `))
