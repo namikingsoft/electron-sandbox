@@ -29,6 +29,7 @@ class SettingContainer extends Component<Props, any> {
             <TextField
               placeholder="Slack Token"
               value={setting.slackToken}
+              hideFirst={true}
               onChange={slackToken => this.changeValue({slackToken})} />
           </div>
           <div className="pure-control-group">

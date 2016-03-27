@@ -5,11 +5,13 @@ import {Component, PropTypes} from "react"
 interface Props {
   value: string
   placeholder: string
+  hideFirst?: boolean
   onChange?: (text: string)=>void
 }
 
 interface State {
-  text: string
+  text?: string
+  hide?: boolean
 }
 
 export default class TextField extends Component<Props, State> {
@@ -17,18 +19,33 @@ export default class TextField extends Component<Props, State> {
     super()
     this.state = {
       text: props.value || "",
+      hide: props.hideFirst || false,
     }
   }
 
   render() {
     const {placeholder} = this.props
-    const {text} = this.state
+    const {text, hide} = this.state
+    const component = (() => {
+      if (text && hide) {
+        return (
+          <input type="text"
+            placeholder={`${placeholder} (display value on focus)`}
+            onFocus={e => this.showValue()} />
+        )
+      } else {
+        return (
+          <input type="text"
+            value={text}
+            placeholder={placeholder}
+            onChange={e => this.handleChange(e)}
+            onBlur={e => this.hideValue()} />
+        )
+      }
+    })()
     return (
       <span className="TextField">
-        <input type="text"
-          value={text}
-          placeholder={placeholder}
-          onChange={e => this.handleChange(e)} />
+        {component}
       </span>
     )
   }
@@ -39,6 +56,18 @@ export default class TextField extends Component<Props, State> {
     const {onChange} = this.props
     if (onChange) {
       onChange(text)
+    }
+  }
+
+  showValue() {
+    if (this.props.hideFirst) {
+      this.setState({hide: false})
+    }
+  }
+
+  hideValue() {
+    if (this.props.hideFirst) {
+      this.setState({hide: true})
     }
   }
 }
