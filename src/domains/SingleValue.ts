@@ -7,15 +7,15 @@ export default class SingleValue<T> {
     private value: T
   ) {}
 
-  valueOf(): T {
+  public valueOf(): T {
     return this.value
   }
 
-  toString(): string {
+  public toString(): string {
     return String(this.value)
   }
 
-  equals(target: SingleValue<T>): boolean {
+  public equals(target: SingleValue<T>): boolean {
     return this.value === target.valueOf()
   }
 }

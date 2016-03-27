@@ -1,24 +1,26 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import Post from "../domains/Post"
 import Letter from "../domains/Letter"
 import Setting from "../domains/Setting"
-import TypingNotify from "../components/TypingNotify"
 import * as PostAction from "../actions/PostAction"
+/* tslint:disable no-unused-variable */
+import TypingNotify from "../components/TypingNotify"
+/* tslint:enable no-unused-variable */
 
 interface Props {
   post?: Post
   setting?: Setting
   postAction?: {
-    removeLetter: (letter: Letter)=>void,
+    removeLetter: (letter: Letter) => void,
   }
 }
 
 class TypingContainer extends Component<Props, any> {
-  render() {
+  public render() {
     const {letters} = this.props.post
     const {removeMsec} = this.props.setting
     const {removeLetter} = this.props.postAction

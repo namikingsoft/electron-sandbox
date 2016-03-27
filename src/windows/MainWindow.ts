@@ -13,7 +13,16 @@ import GlobalRepository from "../domains/GlobalRepository"
 class Window extends BrowserWindow {}
 
 export default class MainWindow {
+  private static instance: MainWindow
   private window: Window
+
+  public static getInstance() {
+    if (!MainWindow.instance) {
+      MainWindow.instance = new MainWindow()
+      GlobalRepository.mainWindow = MainWindow.instance
+    }
+    return MainWindow.instance
+  }
 
   private constructor() {
     const screenSize = screen.getPrimaryDisplay().size
@@ -41,22 +50,12 @@ export default class MainWindow {
     }
   }
 
-  show() {
+  public show() {
     this.window.show()
   }
 
-  reload() {
+  public reload() {
     this.window.reload()
     this.window.loadURL(BASE_URL)
-  }
-
-  // singleton
-  private static instance: MainWindow
-  static getInstance() {
-    if (!MainWindow.instance) {
-      MainWindow.instance = new MainWindow()
-      GlobalRepository.mainWindow = MainWindow.instance
-    }
-    return MainWindow.instance
   }
 }

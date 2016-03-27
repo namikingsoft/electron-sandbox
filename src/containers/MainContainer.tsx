@@ -1,6 +1,6 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import Post from "../domains/Post"
@@ -16,16 +16,16 @@ interface Props {
   post?: Post
   setting?: Setting
   postAction?: {
-    connectSlack: (token: string)=>void,
+    connectSlack: (token: string) => void,
   }
   route?: {
     path: string,
   }
-  children?: Array<Component<any,any>>
+  children?: Array<Component<any, any>>
 }
 
 class MainContainer extends Component<Props, any> {
-  render() {
+  public render() {
     return (
       <div className="MainContainer">
         {this.props.children}
@@ -33,7 +33,7 @@ class MainContainer extends Component<Props, any> {
     )
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     const {route, setting} = this.props
     if (route.path === "/") {
       // redirect @todo use react-router?

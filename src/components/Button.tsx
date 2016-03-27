@@ -1,15 +1,15 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import {Component, PropTypes, FormEvent} from "react"
+import {Component, FormEvent} from "react"
 
 interface Props {
-  children?: Array<Component<any,any>>
+  children?: Array<Component<any, any>>
   mode?: string
-  onClick?: ()=>void
+  onClick?: () => void
 }
 
 export default class Button extends Component<Props, any> {
-  render() {
+  public render() {
     const mode = this.props.mode || "default"
     return (
       <span className="Button">
@@ -22,7 +22,7 @@ export default class Button extends Component<Props, any> {
     )
   }
 
-  handleClick(e: FormEvent) {
+  public handleClick(e: FormEvent) {
     const {onClick} = this.props
     if (onClick) {
       onClick()

@@ -1,12 +1,12 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 
 interface Props {
   value: string
   placeholder: string
   hideFirst?: boolean
-  onChange?: (text: string)=>void
+  onChange?: (text: string) => void
 }
 
 interface State {
@@ -23,7 +23,7 @@ export default class TextField extends Component<Props, State> {
     }
   }
 
-  render() {
+  public render() {
     const {placeholder} = this.props
     const {text, hide} = this.state
     const component = (() => {
@@ -50,7 +50,7 @@ export default class TextField extends Component<Props, State> {
     )
   }
 
-  handleChange(e: any) {
+  public handleChange(e: any) {
     const text = e.target.value
     this.setState({text})
     const {onChange} = this.props

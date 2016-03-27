@@ -1,13 +1,13 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 import Letter from "../domains/Letter"
 
 interface Props {
   letter: Letter
   removeMsec: number
-  onMount?: ()=>void
+  onMount?: () => void
 }
 
 interface State {
@@ -19,12 +19,12 @@ export default class StreamNotify extends Component<Props, State> {
   constructor() {
     super()
     this.state = {
-      top: Math.floor(Math.random() * (window.innerHeight-100)), // @todo asobi
+      top: Math.floor(Math.random() * (window.innerHeight - 100)), // @todo asobi
       left: window.innerWidth,
     }
   }
 
-  render() {
+  public render() {
     const {letter, removeMsec} = this.props
     const style: any = this.state
     style["transition"] = `left ${removeMsec}ms linear`
@@ -50,7 +50,7 @@ export default class StreamNotify extends Component<Props, State> {
     )
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     setTimeout(() => {
       // @todo any
       const label: any = ReactDOM.findDOMNode(this.refs["label"])
@@ -62,9 +62,9 @@ export default class StreamNotify extends Component<Props, State> {
     this.props.onMount()
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
   }
 
-  componentDidUpdate(prevProps: Props = null) {
+  public componentDidUpdate(prevProps: Props = null) {
   }
 }

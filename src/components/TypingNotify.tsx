@@ -1,14 +1,13 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import * as ReactDOM from "react-dom"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 import Letter from "../domains/Letter"
 import {TYPING_DELTA_MSEC} from "../app.const"
 
 interface Props {
   letter: Letter
   removeMsec: number
-  onMount?: ()=>void
+  onMount?: () => void
 }
 
 interface State {
@@ -35,11 +34,11 @@ export default class TypingNotify extends Component<Props, State> {
     }
   }
 
-  render() {
+  public render() {
     const {letter} = this.props
     const {source, count, style} = this.state
     // @todo 5 is magic number of anti-afterimage
-    const typingClass = count < source.length-5 ? "typing" : ""
+    const typingClass = (count < source.length - 5) ? "typing" : ""
     return (
       <div className="TypingNotify" style={style}>
         <div className="TypingNotify__meta">
@@ -60,7 +59,7 @@ export default class TypingNotify extends Component<Props, State> {
     )
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     if (this.props.onMount) {
       this.props.onMount()
     }
@@ -68,10 +67,10 @@ export default class TypingNotify extends Component<Props, State> {
     this.animate()
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
   }
 
-  componentDidUpdate(prevProps: Props = null) {
+  public componentDidUpdate(prevProps: Props = null) {
   }
 
   private typing() {
@@ -95,7 +94,7 @@ export default class TypingNotify extends Component<Props, State> {
           maxHeight: 500,
         },
       })
-      setTimeout(resolve, removeMsec-1500)
+      setTimeout(resolve, removeMsec - 1500)
     }))
     .then(() => new Promise((resolve, reject) => {
       this.setState({
