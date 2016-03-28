@@ -59,13 +59,13 @@ export default class TextField extends Component<Props, State> {
     }
   }
 
-  showValue() {
+  public showValue() {
     if (this.props.hideFirst) {
       this.setState({hide: false})
     }
   }
 
-  hideValue() {
+  public hideValue() {
     if (this.props.hideFirst) {
       this.setState({hide: true})
     }
