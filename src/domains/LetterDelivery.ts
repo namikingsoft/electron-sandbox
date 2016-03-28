@@ -29,7 +29,7 @@ export default class LetterDelivery {
     private slackToken: string
   ) {}
 
-  onPost(callback: (letter: Letter) => void): Promise<boolean> {
+  public onPost(callback: (letter: Letter) => void): Promise<boolean> {
     return this.getMetaInfo()
     .then(meta => {
       const token = this.slackToken

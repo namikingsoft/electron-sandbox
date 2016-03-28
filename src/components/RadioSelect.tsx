@@ -1,6 +1,6 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 
 interface Radio {
   label: string
@@ -11,7 +11,7 @@ interface Props {
   name: string
   value: string
   data: Array<Radio>
-  onChange?: (value:string)=>void
+  onChange?: (value: string) => void
 }
 
 interface State {
@@ -26,7 +26,7 @@ export default class RadioSelect extends Component<Props, State> {
     }
   }
 
-  render() {
+  public render() {
     const {name, data} = this.props
     const {value} = this.state
     return (
@@ -46,7 +46,7 @@ export default class RadioSelect extends Component<Props, State> {
     )
   }
 
-  handleChange(value: string) {
+  public handleChange(value: string) {
     this.setState({value})
     const {onChange} = this.props
     if (onChange) {

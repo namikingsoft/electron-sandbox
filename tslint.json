@@ -60,8 +60,15 @@
     "curly": true,
     "no-unreachable": true,
     "no-unused-expression": true,
-    "no-unused-variable": [true, "react"],
+    "no-unused-variable": [true, "react", "react/addons"],
     "no-var-keyword": true,
-    "max-line-length": [true, 120]
+    "max-line-length": [true, 120],
+    "member-access": true,
+    "member-ordering": [
+      true,
+      "public-before-private",
+      "static-before-instance",
+      "variables-before-functions"
+    ]
   }
 }

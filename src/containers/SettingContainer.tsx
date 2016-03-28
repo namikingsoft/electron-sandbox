@@ -1,6 +1,6 @@
 /// <reference path="../reference.d.ts" />
 import * as React from "react"
-import {Component, PropTypes} from "react"
+import {Component} from "react"
 import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import * as SettingAction from "../actions/SettingAction"
@@ -12,14 +12,14 @@ import Button from "../components/Button"
 interface Props {
   setting?: Setting
   action?: {
-    updateSetting: (setting: Setting)=>void,
-    cancelSetting: ()=>void,
-    saveSetting: ()=>void,
+    updateSetting: (setting: Setting) => void,
+    cancelSetting: () => void,
+    saveSetting: () => void,
   }
 }
 
 class SettingContainer extends Component<Props, any> {
-  render() {
+  public render() {
     const {setting, action} = this.props
     return (
       <div className="SettingContainer">
@@ -59,7 +59,7 @@ class SettingContainer extends Component<Props, any> {
     )
   }
 
-  changeValue(obj: any) {
+  public changeValue(obj: any) {
     const {setting} = this.props
     this.props.action.updateSetting(
       new Setting({
