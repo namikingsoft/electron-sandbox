@@ -2,11 +2,9 @@ import "babel-polyfill"
 import * as React from "react"
 import {render} from "react-dom"
 import {createStore, applyMiddleware} from "redux"
-/* tslint:disable no-unused-variable */
 import {Provider} from "react-redux"
 import {Router, Route, Redirect, hashHistory} from "react-router"
-/* tslint:enable no-unused-variable */
-import MainContainer from "./containers/MainContainer"
+import MainContainer from './containers/MainContainer'
 import TypingContainer from "./containers/TypingContainer"
 import StreamContainer from "./containers/StreamContainer"
 import SettingContainer from "./containers/SettingContainer"
