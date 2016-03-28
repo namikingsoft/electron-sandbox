@@ -4,7 +4,7 @@ import {render} from "react-dom"
 import {createStore, applyMiddleware} from "redux"
 import {Provider} from "react-redux"
 import {Router, Route, Redirect, hashHistory} from "react-router"
-import MainContainer from './containers/MainContainer'
+import MainContainer from "./containers/MainContainer"
 import TypingContainer from "./containers/TypingContainer"
 import StreamContainer from "./containers/StreamContainer"
 import SettingContainer from "./containers/SettingContainer"
