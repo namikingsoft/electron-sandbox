@@ -7,9 +7,7 @@ import Post from "../domains/Post"
 import Letter from "../domains/Letter"
 import Setting from "../domains/Setting"
 import * as PostAction from "../actions/PostAction"
-/* tslint:disable no-unused-variable */
 import StreamNotify from "../components/StreamNotify"
-/* tslint:enable no-unused-variable */
 
 interface Props {
   post?: Post

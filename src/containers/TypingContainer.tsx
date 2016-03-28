@@ -7,9 +7,7 @@ import Post from "../domains/Post"
 import Letter from "../domains/Letter"
 import Setting from "../domains/Setting"
 import * as PostAction from "../actions/PostAction"
-/* tslint:disable no-unused-variable */
 import TypingNotify from "../components/TypingNotify"
-/* tslint:enable no-unused-variable */
 
 interface Props {
   post?: Post

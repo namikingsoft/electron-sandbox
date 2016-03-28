@@ -5,11 +5,9 @@ import {bindActionCreators} from "redux"
 import {connect} from "react-redux"
 import * as SettingAction from "../actions/SettingAction"
 import Setting from "../domains/Setting"
-/* tslint:disable no-unused-variable */
 import TextField from "../components/TextField"
 import RadioSelect from "../components/RadioSelect"
 import Button from "../components/Button"
-/* tslint:enable no-unused-variable */
 
 interface Props {
   setting?: Setting
