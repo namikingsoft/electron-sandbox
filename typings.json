@@ -5,6 +5,7 @@
   "ambientDependencies": {
     "bluebird": "registry:dt/bluebird#2.0.0+20160209044412",
     "empower": "registry:dt/empower#0.0.0+20141113152232",
+    "form-data": "registry:dt/form-data#0.0.0+20160316155526",
     "github-electron": "registry:dt/github-electron#0.36.3+20160229022412",
     "mocha": "registry:dt/mocha#2.2.5+20151023103246",
     "node": "registry:dt/node#4.0.0+20160226132328",
@@ -18,6 +19,7 @@
     "react-redux": "registry:dt/react-redux#4.4.0+20160226053734",
     "react-router": "registry:dt/react-router#2.0.0+20160304131424",
     "react-router/history": "registry:dt/react-router/history#2.0.0+20160225231409",
-    "redux": "registry:dt/redux#1.0.0+20160201195450"
+    "redux": "registry:dt/redux#1.0.0+20160201195450",
+    "request": "registry:dt/request#0.0.0+20160316155526"
   }
 }

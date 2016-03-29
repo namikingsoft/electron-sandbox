@@ -9,6 +9,7 @@
     "package": "NODE_ENV=production gulp package",
     "test": "gulp test",
     "test:watch": "gulp test:watch",
+    "tslint": "gulp test:shell:tslint 2> /dev/null",
     "start": "NODE_ENV=develop gulp server"
   },
   "author": "",
@@ -16,15 +17,19 @@
   "dependencies": {
     "babel-polyfill": "^6.6.1",
     "bluebird": "^3.3.4",
+    "dotenv": "^2.0.0",
     "node-uuid": "^1.4.7",
+    "open": "0.0.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.1",
     "redux": "^3.3.1",
     "redux-thunk": "^2.0.1",
+    "request": "^2.69.0",
     "slack": "^6.1.0",
-    "source-map-support": "^0.4.0"
+    "source-map-support": "^0.4.0",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",

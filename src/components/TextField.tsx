@@ -51,6 +51,17 @@ export default class TextField extends Component<Props, State> {
     )
   }
 
+  public componentDidUpdate(prevProps: Props, prevState: State) {
+    if (
+      this.state.text !== this.props.value &&
+      this.state.text === prevState.text
+    ) {
+      this.setState({
+        text: this.props.value,
+      })
+    }
+  }
+
   public handleChange(e: any) {
     const text = e.target.value
     this.setState({text})
