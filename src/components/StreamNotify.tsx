@@ -16,6 +16,7 @@ interface State {
 }
 
 export default class StreamNotify extends Component<Props, State> {
+
   constructor() {
     super()
     this.state = {

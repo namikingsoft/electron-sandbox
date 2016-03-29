@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default class Button extends Component<Props, any> {
+
   public render() {
     const mode = this.props.mode || "default"
     return (

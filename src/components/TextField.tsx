@@ -15,6 +15,7 @@ interface State {
 }
 
 export default class TextField extends Component<Props, State> {
+
   constructor(props: Props) {
     super()
     this.state = {
