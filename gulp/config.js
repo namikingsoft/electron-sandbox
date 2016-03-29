@@ -63,7 +63,7 @@ const package = {
   name: 'ElectronApp',
   platforms: ['win32', 'darwin', 'linux'],
   arch: 'x64',        // x64 or ia32
-  version: '0.36.11', // electron version
+  version: '0.37.2', // electron version
 }
 
 module.exports = {dir, src, server, watch, browserify, package}
