@@ -7,6 +7,7 @@ import freeze from "../decorators/freeze"
 
 @freeze
 export default class Letter {
+
   constructor(private param: {
     user: User,
     channel: Channel,

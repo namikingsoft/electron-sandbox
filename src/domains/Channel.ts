@@ -3,6 +3,7 @@ import freeze from "../decorators/freeze"
 
 @freeze
 export default class Channel {
+
   constructor(private param: {
     id: string
     name: string,

@@ -25,6 +25,7 @@ interface Props {
 }
 
 class MainContainer extends Component<Props, any> {
+
   public render() {
     return (
       <div className="MainContainer">

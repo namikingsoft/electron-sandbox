@@ -4,6 +4,7 @@ import freeze from "../decorators/freeze"
 
 @freeze
 export default class Message extends SingleValue<string> {
+
   public toDisplay(): string {
     if (this.valueOf()) {
       return this.toString().replace(/<[^<>]*>/g, "")
