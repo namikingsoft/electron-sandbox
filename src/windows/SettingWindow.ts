@@ -11,7 +11,6 @@ import GlobalRepository from "../domains/GlobalRepository"
 class Window extends BrowserWindow {}
 
 export default class SettingWindow {
-
   private static instance: SettingWindow
   private window: Window
 
