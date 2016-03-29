@@ -32,7 +32,7 @@
     "browserify": "^13.0.0",
     "del": "^2.2.0",
     "electron-connect": "^0.3.7",
-    "electron-packager": "^6.0.0",
+    "electron-packager": "^5.2.1",
     "electron-prebuilt": "^0.37.2",
     "envify": "^3.4.0",
     "espower-loader": "^1.0.0",
