@@ -8,6 +8,7 @@ import Setting from "../domains/Setting"
 import TextField from "../components/TextField"
 import RadioSelect from "../components/RadioSelect"
 import Button from "../components/Button"
+import GlobalRepository from "../domains/GlobalRepository"
 
 interface Props {
   setting?: Setting
@@ -32,6 +33,7 @@ class SettingContainer extends Component<Props, any> {
               value={setting.slackToken}
               hideFirst={true}
               onChange={slackToken => this.changeValue({slackToken})} />
+            <Button onClick={() => this.openOAuth()}>OAuth</Button>
           </div>
           <div className="pure-control-group">
             <label>Remove Msec</label>
@@ -60,7 +62,7 @@ class SettingContainer extends Component<Props, any> {
     )
   }
 
-  public changeValue(obj: any) {
+  private changeValue(obj: any) {
     const {setting} = this.props
     this.props.action.updateSetting(
       new Setting({
@@ -69,6 +71,12 @@ class SettingContainer extends Component<Props, any> {
         removeMsec: obj.removeMsec || setting.removeMsec,
       })
     )
+  }
+
+  private openOAuth() {
+    GlobalRepository.settingWindow.openOAuth()
+    .then(slackToken => this.changeValue({slackToken}))
+    .catch(err => alert("Error"))
   }
 }
 
