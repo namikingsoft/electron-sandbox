@@ -9,6 +9,7 @@
     "package": "NODE_ENV=production gulp package",
     "test": "gulp test",
     "test:watch": "gulp test:watch",
+    "tslint": "gulp test:shell:tslint 2> /dev/null",
     "start": "NODE_ENV=develop gulp server"
   },
   "author": "",
