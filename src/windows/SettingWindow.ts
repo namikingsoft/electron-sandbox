@@ -2,8 +2,8 @@
 import {
   BrowserWindow,
 } from "electron"
-import * as http from 'http'
-import * as request from 'request'
+import * as http from "http"
+import * as request from "request"
 import {
   BASE_URL,
 } from "../app.const"
@@ -81,7 +81,7 @@ export default class SettingWindow {
     let serverResponse: any // @todo messy
     return new Promise<string>((resolve, reject) => {
       const state = String(Math.random())
-      require('open')(
+      require("open")(
         OAUTH_AUTHORIZE_URL
         + `?client_id=${process.env.SLACK_CLIENT_ID}`
         + `&scope=${OAUTH_SCOPE}`
@@ -93,16 +93,16 @@ export default class SettingWindow {
     .then(state => new Promise<string>((resolve, reject) => {
       this.closeServer()
       this.server = http.createServer()
-      this.server.on('request', (req: any, res: any) => {
+      this.server.on("request", (req: any, res: any) => {
         serverResponse = res
-        const data: AuthorizeData = require('url').parse(req.url, true).query
+        const data: AuthorizeData = require("url").parse(req.url, true).query
         if (data.state === state) {
           resolve(data.code)
         } else {
-          reject(new Error('not match state'))
+          reject(new Error("not match state"))
         }
       })
-      this.server.listen(OAUTH_LOCAL_PORT);
+      this.server.listen(OAUTH_LOCAL_PORT)
     }))
     .then(code => new Promise<string>((resolve, reject) => {
       const url = OAUTH_ACCESS_URL
@@ -113,11 +113,11 @@ export default class SettingWindow {
       }
       request.post({url, form}, (err, res, body) => {
         if (err) {
-          serverResponse.writeHead(403, {'Content-Type': 'text/plain'})
-          serverResponse.end('Access Token Setting is Error')
+          serverResponse.writeHead(403, {"Content-Type": "text/plain"})
+          serverResponse.end("Access Token Setting is Error")
           reject(err)
         } else {
-          serverResponse.writeHead(200, {'Content-Type': 'text/plain'})
+          serverResponse.writeHead(200, {"Content-Type": "text/plain"})
           serverResponse.end(`
             Access Token Setting is Successful. Please close this window.
           `)
