@@ -19,6 +19,7 @@ interface Props {
 }
 
 class SettingContainer extends Component<Props, any> {
+
   public render() {
     const {setting, action} = this.props
     return (

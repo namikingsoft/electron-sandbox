@@ -13,6 +13,7 @@ import GlobalRepository from "../domains/GlobalRepository"
 class Window extends BrowserWindow {}
 
 export default class MainWindow {
+
   private static instance: MainWindow
   private window: Window
 

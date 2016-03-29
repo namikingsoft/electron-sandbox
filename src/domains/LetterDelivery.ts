@@ -25,6 +25,7 @@ interface MetaInfo {
 
 @freeze
 export default class LetterDelivery {
+
   constructor(
     private slackToken: string
   ) {}

@@ -18,6 +18,7 @@ interface Props {
 }
 
 class StreamContainer extends Component<Props, any> {
+
   public render() {
     const {letters} = this.props.post
     const {removeMsec} = this.props.setting

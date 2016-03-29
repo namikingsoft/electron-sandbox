@@ -22,6 +22,7 @@ export default function setting(
   state: Setting = initialState,
   action: SettingAction
 ): Setting {
+
   switch (action.type) {
   case UPDATE_SETTING:
     return action.setting

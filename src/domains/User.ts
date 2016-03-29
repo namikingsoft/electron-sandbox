@@ -4,6 +4,7 @@ import {NO_IMAGE_URL} from "../app.const"
 
 @freeze
 export default class User {
+
   constructor(private param: {
     id: string
     name: string,

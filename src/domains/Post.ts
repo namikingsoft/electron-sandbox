@@ -4,6 +4,7 @@ import freeze from "../decorators/freeze"
 
 @freeze
 export default class Post {
+
   constructor(private param: {
     letters: Array<Letter>
   }) {}

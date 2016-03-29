@@ -14,6 +14,7 @@ export default function post(
   state: Post = initialState,
   action: PostAction
 ): Post {
+
   switch (action.type) {
   case ADD_LETTER:
     return new Post({
