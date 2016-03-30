@@ -8,7 +8,7 @@ import MainWindow from "./windows/MainWindow"
 import SettingWindow from "./windows/SettingWindow"
 
 // load .env file
-require("dotenv").config()
+require("dotenv").config({path: `${__dirname}/app.env`})
 
 if (process.env.NODE_ENV === "develop") {
   // source map for node
