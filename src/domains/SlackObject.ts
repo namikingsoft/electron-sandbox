@@ -28,6 +28,7 @@ export interface ChannelListObject {
 
 export interface MessageObject {
   text: string
+  team: string
   user: string
   channel: string
 }
