@@ -1,6 +1,6 @@
 {
-  "name": "electron-sandbox",
-  "version": "0.0.0",
+  "name": "snotido",
+  "version": "0.0.1",
   "description": "",
   "main": ".server/app.js",
   "scripts": {

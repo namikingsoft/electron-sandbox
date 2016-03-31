@@ -60,7 +60,7 @@ const browserify = {
 }
 
 const package = {
-  name: 'ElectronApp',
+  name: 'Snotido',
   platforms: ['win32', 'darwin', 'linux'],
   arch: 'x64',        // x64 or ia32
   version: '0.37.2', // electron version
