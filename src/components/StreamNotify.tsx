@@ -36,6 +36,9 @@ export default class StreamNotify extends Component<Props, State> {
         </div>
         <div className="StreamNotify__main">
           <div className="StreamNotify__main__meta">
+            <span className="StreamNotify__main__meta__team">
+              {letter.team.name}
+            </span>
             <span className="StreamNotify__main__meta__user">
               {letter.user.name}
             </span>

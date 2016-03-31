@@ -45,8 +45,9 @@ export default class TypingNotify extends Component<Props, State> {
           <div className="TypingNotify__meta__image">
             <img src={letter.user.image} />
           </div>
-          <div className="TypingNotify__meta__user">
-            {letter.user.name}
+          <div className="TypingNotify__meta__teamuser">
+            <span className="team">{letter.team.name}</span>
+            <span className="user">{letter.user.name}</span>
           </div>
           <div className="TypingNotify__meta__channel">
             {letter.channel.name}
