@@ -1,6 +1,7 @@
 /// <reference path="../reference.d.ts" />
 import * as Promise from "bluebird"
 import {
+  TeamObject,
   UserObject,
   UserListObject,
   ChannelObject,
@@ -8,6 +9,7 @@ import {
   MessageObject,
 } from "../domains/SlackObject"
 import Letter from "../domains/Letter"
+import Team from "../domains/Team"
 import User from "../domains/User"
 import Channel from "../domains/Channel"
 import Message from "../domains/Message"
@@ -15,10 +17,12 @@ import freeze from "../decorators/freeze"
 
 const slack = require("slack")
 Promise.promisifyAll(slack.auth)
+Promise.promisifyAll(slack.team)
 Promise.promisifyAll(slack.users)
 Promise.promisifyAll(slack.channels)
 
 interface MetaInfo {
+  team: {[index: string]: TeamObject}
   user: {[index: string]: UserObject}
   channel: {[index: string]: ChannelObject}
 }
@@ -39,6 +43,12 @@ export default class LetterDelivery {
         if (!(obj.text && obj.team)) {
           return
         }
+        const teamObj = meta.team[obj.team]
+        const team = new Team({
+          id: obj.team,
+          name: teamObj ? teamObj.team.name : obj.team,
+          domain: teamObj ? teamObj.team.domain : obj.team,
+        })
         const userObj = meta.user[obj.user]
         const user = new User({
           id: obj.user,
@@ -51,7 +61,7 @@ export default class LetterDelivery {
           name: channelObj ? channelObj.name : obj.channel,
         })
         const message = new Message(obj.text)
-        const letter = new Letter({user, channel, message})
+        const letter = new Letter({team, user, channel, message})
         callback(letter)
       })
       bot.listen({token})
@@ -62,11 +72,16 @@ export default class LetterDelivery {
   private getMetaInfo(): Promise<MetaInfo> {
     const token = this.slackToken
     const meta: MetaInfo = {
+      team: {},
       user: {},
       channel: {},
     }
     return slack.auth.testAsync({token})
     .then(() => {
+      return slack.team.infoAsync({token})
+    })
+    .then((data: TeamObject) => {
+      meta.team[data.team.id] = data
       return slack.users.listAsync({token})
     })
     .then((data: UserListObject) => {

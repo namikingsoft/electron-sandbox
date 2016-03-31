@@ -45,7 +45,7 @@ export default class SettingWindow {
   private constructor() {
     this.window = new BrowserWindow({
       width: 600,
-      height: 240,
+      height: 280,
       center: true,
       frame: false,
       resizable: false,

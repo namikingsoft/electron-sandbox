@@ -1,5 +1,6 @@
 import Post from 'domains/Post'
 import Letter from 'domains/Letter'
+import Team from 'domains/Team'
 import User from 'domains/User'
 import Channel from 'domains/Channel'
 import Message from 'domains/Message'
@@ -13,6 +14,11 @@ describe('Letter', function() {
   let letters: Array<Letter>
 
   before(() => {
+    const team = new Team({
+      id: 'ID',
+      name: 'Team',
+      domain: 'Domain',
+    })
     const user = new User({
       id: 'ID',
       name: 'User',
@@ -22,8 +28,8 @@ describe('Letter', function() {
       name: 'Channel',
     })
     const message = new Message('Text')
-    letter1 = new Letter({user, channel, message})
-    letter2 = new Letter({user, channel, message})
+    letter1 = new Letter({team, user, channel, message})
+    letter2 = new Letter({team, user, channel, message})
     letters = [letter1, letter2]
     post = new Post({letters})
   })

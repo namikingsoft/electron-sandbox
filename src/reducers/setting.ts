@@ -14,6 +14,7 @@ import GlobalRepository from "../domains/GlobalRepository"
 
 const initialState: Setting = new Setting({
   slackToken: localStorage["slackToken"] || "",
+  slackTokenAlt: localStorage["slackTokenAlt"] || "",
   notifyType: localStorage["notifyType"] || DEFAULT_NOTIFY_TYPE,
   removeMsec: localStorage["removeMsec"] || DEFAULT_REMOVE_MSEC,
 })
@@ -31,6 +32,7 @@ export default function setting(
     break
   case SAVE_SETTING:
     localStorage["slackToken"] = state.slackToken
+    localStorage["slackTokenAlt"] = state.slackTokenAlt
     localStorage["notifyType"] = state.notifyType
     localStorage["removeMsec"] = state.removeMsec
     GlobalRepository.mainWindow.reload()

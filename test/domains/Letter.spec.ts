@@ -1,4 +1,5 @@
 import Letter from 'domains/Letter'
+import Team from 'domains/Team'
 import User from 'domains/User'
 import Channel from 'domains/Channel'
 import Message from 'domains/Message'
@@ -7,11 +8,17 @@ import * as assert from 'power-assert'
 describe('Letter', function() {
 
   let letter: Letter
+  let team: Team
   let user: User
   let channel: Channel
   let message: Message
 
   before(() => {
+    team = new Team({
+      id: 'ID',
+      name: 'Team',
+      domain: 'Domain',
+    })
     user = new User({
       id: 'ID',
       name: 'User',
@@ -22,7 +29,7 @@ describe('Letter', function() {
     })
     message = new Message('Text')
     letter = new Letter({
-      user, channel, message,
+      team, user, channel, message,
     })
   })
 
@@ -36,6 +43,12 @@ describe('Letter', function() {
     it('should be return identify string', () => {
       assert(typeof letter.id === 'string')
       assert(letter.id.length > 0)
+    })
+  })
+
+  describe('team', () => {
+    it('should be return initial value', () => {
+      assert(letter.team === team)
     })
   })
 

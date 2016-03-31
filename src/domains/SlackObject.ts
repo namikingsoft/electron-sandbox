@@ -1,4 +1,13 @@
 /// <reference path="../reference.d.ts" />
+
+export interface TeamObject {
+  team: {
+    id: string,
+    name: string,
+    domain: string,
+  }
+}
+
 export interface UserObject {
   id: string
   name: string
