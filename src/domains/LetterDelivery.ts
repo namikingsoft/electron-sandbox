@@ -36,7 +36,7 @@ export default class LetterDelivery {
       const token = this.slackToken
       const bot = slack.rtm.client()
       bot.message((obj: MessageObject) => {
-        if (!obj.text) {
+        if (!(obj.text && obj.team)) {
           return
         }
         const userObj = meta.user[obj.user]
