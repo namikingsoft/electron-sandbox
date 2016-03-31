@@ -41,8 +41,12 @@ class MainContainer extends Component<Props, any> {
       location.hash = `/${setting.notifyType}`
     }
     const {connectSlack} = this.props.postAction
-    if (connectSlack) {
+    if (setting.slackToken) {
       connectSlack(setting.slackToken)
+    }
+    if (setting.slackTokenAlt) {
+      console.log(setting.slackTokenAlt)
+      connectSlack(setting.slackTokenAlt)
     }
     this.setTimeoutAutoReload()
   }

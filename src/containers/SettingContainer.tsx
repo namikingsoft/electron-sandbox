@@ -36,6 +36,15 @@ class SettingContainer extends Component<Props, any> {
             <Button onClick={() => this.openOAuth()}>OAuth</Button>
           </div>
           <div className="pure-control-group">
+            <label>Slack Token Alt</label>
+            <TextField
+              placeholder="Slack Token"
+              value={setting.slackTokenAlt}
+              hideFirst={true}
+              onChange={slackTokenAlt => this.changeValue({slackTokenAlt})} />
+            <Button onClick={() => this.openOAuthAlt()}>OAuth</Button>
+          </div>
+          <div className="pure-control-group">
             <label>Remove Msec</label>
             <TextField
               placeholder="Remove Msec"
@@ -64,18 +73,30 @@ class SettingContainer extends Component<Props, any> {
 
   private changeValue(obj: any) {
     const {setting} = this.props
-    this.props.action.updateSetting(
-      new Setting({
-        slackToken: obj.slackToken || setting.slackToken,
-        notifyType: obj.notifyType || setting.notifyType,
-        removeMsec: obj.removeMsec || setting.removeMsec,
-      })
-    )
+    if (obj.slackToken === undefined) {
+      obj.slackToken = setting.slackToken
+    }
+    if (obj.slackTokenAlt === undefined) {
+      obj.slackTokenAlt = setting.slackTokenAlt
+    }
+    if (obj.notifyType === undefined) {
+      obj.notifyType = setting.notifyType
+    }
+    if (obj.removeMsec === undefined) {
+      obj.removeMsec = setting.removeMsec
+    }
+    this.props.action.updateSetting(new Setting(obj))
   }
 
   private openOAuth() {
     GlobalRepository.settingWindow.openOAuth()
     .then(slackToken => this.changeValue({slackToken}))
+    .catch(err => alert("Error"))
+  }
+
+  private openOAuthAlt() {
+    GlobalRepository.settingWindow.openOAuth()
+    .then(slackTokenAlt => this.changeValue({slackTokenAlt}))
     .catch(err => alert("Error"))
   }
 }

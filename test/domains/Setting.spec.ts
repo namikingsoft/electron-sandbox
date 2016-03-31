@@ -8,6 +8,7 @@ describe('Setting', function() {
   before(() => {
     setting = new Setting({
       slackToken: 'SlackToken',
+      slackTokenAlt: 'SlackTokenAlt',
       notifyType: 'NotifyType',
       removeMsec: 1234,
     })
@@ -22,6 +23,12 @@ describe('Setting', function() {
   describe('slackToken', () => {
     it('should be return initial value', () => {
       assert(setting.slackToken === 'SlackToken')
+    })
+  })
+
+  describe('slackTokenAlt', () => {
+    it('should be return initial value', () => {
+      assert(setting.slackTokenAlt === 'SlackTokenAlt')
     })
   })
 
