@@ -45,7 +45,6 @@ class MainContainer extends Component<Props, any> {
       connectSlack(setting.slackToken)
     }
     if (setting.slackTokenAlt) {
-      console.log(setting.slackTokenAlt)
       connectSlack(setting.slackTokenAlt)
     }
     this.setTimeoutAutoReload()
